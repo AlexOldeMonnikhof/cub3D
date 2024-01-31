@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 11:53:51 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:16:18 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ static char **initialize_array(int *capacity);
 char **read_cub_file_to_2d_array(const char *filename, int *num_rows);
 int count_rows_in_file(const char *filename);
 void    get_start_direction(char c, t_data *data);
+
 
 
 #endif
