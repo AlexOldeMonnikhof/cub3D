@@ -41,7 +41,7 @@ if(UNIX)
 		-Wall
 		-Werror
 		-Wunreachable-code
-		
+
 		# Some low priority warnings that are annoying.
 		-Wno-char-subscripts
 		-Wno-sign-compare

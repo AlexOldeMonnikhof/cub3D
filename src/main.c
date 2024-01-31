@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 14:10:25 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:39:32 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ int	main(int argc, char **argv)
 	// 	i++;
 	// }
 
-	error = parsing(cub_data);
-    if (error == -1)
-    {
-        printf("Error: Invalid map.\n");
-        return (-1);
-    }
+	// error = parsing(cub_data);
+    // if (error == -1)
+    // {
+    //     printf("Error: Invalid map.\n");
+    //     return (-1);
+    // }
     final_parse(data, cub_data);
 	initialize(data);
 	game(data);
