@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 14:37:38 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:37:07 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void	close_mlx(t_data *data);
 void	cleanup(t_data *data);
 
 //error
+void	check_input(int argc, char **argv);
 void	*ft_malloc(size_t size);
 void	print_error(char *s);
 
