@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 14:39:32 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:36:16 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	main(int argc, char **argv)
 
     int error = 0;
 	int num_rows = count_rows_in_file(argv[1]);
+
+	check_input(argc, argv);
 	data = malloc(sizeof(t_data));
 
 	char **cub_data = read_cub_file_to_2d_array(argv[1], &num_rows);
@@ -56,7 +58,7 @@ int	main(int argc, char **argv)
 	// 	i++;
 	// }
 
-	// error = parsing(cub_data);
+	error = parsing(cub_data, data);
     // if (error == -1)
     // {
     //     printf("Error: Invalid map.\n");
