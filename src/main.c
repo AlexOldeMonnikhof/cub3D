@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 10:45:24 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:10:25 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	main(int argc, char **argv)
     int error = 0;
 	int num_rows = count_rows_in_file(argv[1]);
 	data = malloc(sizeof(t_data));
-	check_input(argc, argv);
 
 	char **cub_data = read_cub_file_to_2d_array(argv[1], &num_rows);
 	// int i = 0;

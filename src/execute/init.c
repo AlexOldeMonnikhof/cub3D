@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:09:47 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 10:51:50 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:12:47 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,13 @@ void	init_player(t_data *data)
 
 	player->x_pos = data->x_player + 0.5;
 	player->y_pos = data->y_player + 0.5;
-	player->x_dir = 1;
-	player->y_dir = 0;
-	player->x_plane = 0;
-	player->y_plane = 0.66;
+	init_direction(data);
 }
+
 void	load_textures(t_data *data)
 {
 
 	data->text_arr = ft_malloc(sizeof(mlx_texture_t *) * 4);
-	// data->text_arr[NORTH] = mlx_load_png("/Users/aolde-mo/Desktop/Documents/github/cub3d/textures/wall1.png");
-	// data->text_arr[EAST] = mlx_load_png("/Users/aolde-mo/Desktop/Documents/github/cub3d/textures/wall3.png");
-	// data->text_arr[SOUTH] = mlx_load_png("/Users/aolde-mo/Desktop/Documents/github/cub3d/textures/swastika.png");
-	// data->text_arr[WEST] = mlx_load_png("/Users/aolde-mo/Desktop/Documents/github/cub3d/textures/lake.png");
-
 	data->text_arr[NORTH] = mlx_load_png(data->NO);
 	data->text_arr[EAST] = mlx_load_png(data->EA);
 	data->text_arr[SOUTH] = mlx_load_png(data->SO);

@@ -6,14 +6,14 @@
 #    By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 14:37:39 by aolde-mo          #+#    #+#              #
-#    Updated: 2024/01/31 10:47:11 by aolde-mo         ###   ########.fr        #
+#    Updated: 2024/01/31 14:11:11 by aolde-mo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 LIBMLX = ./MLX42
 LIBFT = libft/libft.a
-SRC = main.c error.c input_check.c utils.c init.c raycasting.c draw.c hooks.c \
+SRC = main.c init_utils.c utils.c init.c raycasting.c draw.c error.c hooks.c \
 		error_check.c get_next_line_utils.c final_parse.c get_next_line.c main2.c parsing.c
 # SRC = test.c
 VPATH = src/ src/execute src/parsing

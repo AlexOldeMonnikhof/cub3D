@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 10:57:08 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:10:17 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,24 @@ typedef struct	s_ray{
 	bool		vertical_wall_hit;
 }				t_ray;
 
+typedef enum	e_movement
+{
+	LEFT,
+	RIGHT,
+	FORWARD,
+	BACKWARD,
+	ROTATE_LEFT,
+	ROTATE_RIGHT,
+}				t_movement;
+
+typedef enum	e_direction
+{
+	NORTH,
+	EAST,
+	SOUTH,
+	WEST,
+}				t_direction;
+
 typedef struct	s_data{
 	mlx_t			*mlx;
 	mlx_image_t		*img;
@@ -98,24 +116,6 @@ typedef struct	s_data{
 	t_direction		start_direction;
 }					t_data;
 
-typedef enum	e_movement
-{
-	LEFT,
-	RIGHT,
-	FORWARD,
-	BACKWARD,
-	ROTATE_LEFT,
-	ROTATE_RIGHT,
-}				t_movement;
-
-typedef enum	e_direction
-{
-	NORTH,
-	EAST,
-	SOUTH,
-	WEST,
-}				t_direction;
-
 //main
 int		main(int argc, char **argv);
 
@@ -139,9 +139,6 @@ void	key_hook(void *param);
 void	close_mlx(t_data *data);
 void	cleanup(t_data *data);
 
-//check
-void	check_input(int argc, char **argv);
-
 //error
 void	*ft_malloc(size_t size);
 void	print_error(char *s);
@@ -151,6 +148,7 @@ int		find_direction(t_data *data);
 void	calculate_draw_vars(t_data *data);
 void	free_textures(t_data *data, int texture);
 void	texture_to_doubleptr(t_data *data);
+void	init_direction(t_data *data);
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
