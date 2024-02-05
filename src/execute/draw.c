@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:48:11 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 10:54:39 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:54:29 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,10 @@ void	calculate_x_wall(t_data *data, t_direction direction)
 		ray->x_wall = player->y_pos + ray->perpendicular_wall_dist * ray->y_ray_dir;
 	ray->x_wall = ray->x_wall - (int)ray->x_wall;
 	ray->x_texture = (int)(ray->x_wall * (double)texture->width);
-	
-	// preventing flipped images
 	if (ray->vertical_wall_hit == true && ray->y_ray_dir > 0)
 		ray->x_texture = data->text_arr[direction]->width - ray->x_texture - 1;
 	if (ray->vertical_wall_hit == false && ray->x_ray_dir < 0)
 		ray->x_texture = data->text_arr[direction]->width - ray->x_texture - 1;
-	
 }
 
 void	put_stripe(t_data *data, int x, int y)

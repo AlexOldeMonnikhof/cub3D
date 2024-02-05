@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:09:47 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 14:12:47 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:55:47 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 //adding 0.5 offset to spawn in the middle of block
 void	init_player(t_data *data)
 {
-	t_player	*player = data->player;
+	t_player	*player;
 
+	player = data->player;
 	player->x_pos = data->x_player + 0.5;
 	player->y_pos = data->y_player + 0.5;
 	init_direction(data);
@@ -26,7 +27,6 @@ void	init_player(t_data *data)
 
 void	load_textures(t_data *data)
 {
-
 	data->text_arr = ft_malloc(sizeof(mlx_texture_t *) * 4);
 	data->text_arr[NORTH] = mlx_load_png(data->NO);
 	data->text_arr[EAST] = mlx_load_png(data->EA);
@@ -44,7 +44,7 @@ void	close_mlx(t_data *data)
 void	cleanup(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 4)
 		free_textures(data, i++);
