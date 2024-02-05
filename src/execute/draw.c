@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:48:11 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/05 16:54:29 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:58:00 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ uint32_t	get_pixel_rgba(uint8_t *arr)
 
 void	calculate_x_wall(t_data *data, t_direction direction)
 {
-	mlx_texture_t	*texture = data->text_arr[direction];
-	t_player *player = data->player;
-	t_ray *ray = data->ray;
+	mlx_texture_t	*texture;
+	t_player		*player;
+	t_ray			*ray;
+
+	texture = data->text_arr[direction];
+	player = data->player;
+	ray = data->ray;
 	ray->x_texture = (int)(ray->x_wall * (double)texture->width);
-	
 	if (ray->vertical_wall_hit == true)
-		ray->x_wall = player->x_pos + ray->perpendicular_wall_dist * ray->x_ray_dir;
+		ray->x_wall = player->x_pos + ray->perp_wall_dist * ray->x_ray_dir;
 	else
-		ray->x_wall = player->y_pos + ray->perpendicular_wall_dist * ray->y_ray_dir;
+		ray->x_wall = player->y_pos + ray->perp_wall_dist * ray->y_ray_dir;
 	ray->x_wall = ray->x_wall - (int)ray->x_wall;
 	ray->x_texture = (int)(ray->x_wall * (double)texture->width);
 	if (ray->vertical_wall_hit == true && ray->y_ray_dir > 0)
