@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/05 16:33:02 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:57:38 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct	s_ray{
 	double		y_ray_dir;
 // to calculate perpendicular distance to wall from camera pov (not the player position)
 // we calculate from camera pov to avoid fisheye effect
-	double		perpendicular_wall_dist;
+	double		perp_wall_dist;
 // negative or positive step direction
 	int			x_step;
 	int			y_step;
