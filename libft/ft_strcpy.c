@@ -1,25 +1,27 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*	                                                                        */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 20:10:42 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2024/02/05 17:50:56 by aolde-mo          #+#    #+#             */
+/*   Updated: 2024/02/05 17:51:08 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list
-	*ft_lstlast(t_list *lst)
+char	*ft_strcpy(char *s1, char *s2)
 {
-	while (lst)
+	int	i;
+
+	i = 0;
+	while (s2[i])
 	{
-		if (!lst->next)
-			return (lst);
-		lst = lst->next;
+		s1[i] = s2[i];
+		i++;
 	}
-	return (lst);
+	s1[i] = s2[i];
+	return (s1);
 }

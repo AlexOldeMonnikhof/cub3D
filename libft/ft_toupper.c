@@ -5,17 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 11:16:27 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/14 16:35:58 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/17 16:21:07 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int
-	ft_toupper(int c)
+int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
+	if (c >= 97 && c <= 122)
 		c -= 32;
 	return (c);
 }
+
+// int	main(void)
+// {
+// 	char	wrd = 'a';
+// 	printf("%c\n", toupper(wrd));
+// 	printf("%c\n", ft_toupper(wrd));
+// }

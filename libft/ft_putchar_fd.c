@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:05:05 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/22 16:28:47 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/17 16:19:32 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void
-	ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }

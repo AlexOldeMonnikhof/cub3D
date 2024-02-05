@@ -5,31 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 16:26:28 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:26:30 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/14 15:15:11 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/20 13:50:18 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int
-	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
-	int	is_neg;
-	int	res;
+	int	pol;
+	int	out;
 
-	if (!str)
-		return (0);
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
-			str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	pol = 1;
+	out = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\r' || str[i] == '\n'
+		|| str[i] == '\v' || str[i] == '\f')
 		i++;
-	is_neg = (str[i] == '-') ? -1 : 1;
-	if (is_neg == -1 || str[i] == '+')
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			pol = -pol;
 		i++;
-	res = 0;
+	}
 	while (str[i] >= '0' && str[i] <= '9')
-		res = (res * 10) + (str[i++] - '0');
-	return (res * is_neg);
+	{
+		out = out * 10 + (str[i] - '0');
+		i++;
+	}
+	return (out * pol);
 }
+
+// int	main(void)
+// {
+// 	char wrd[] = "	-25350c32";
+// 	printf("%d\n", ft_atoi(wrd));
+// 	printf("%d\n", atoi(wrd));
+// }

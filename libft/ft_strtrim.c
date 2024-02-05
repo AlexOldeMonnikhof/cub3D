@@ -5,49 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 16:27:58 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:27:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/24 12:59:00 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/17 16:20:54 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-static int
-	ft_char_in_set(char c, char const *set)
+static int	ft_check_set(char c, char const *set)
 {
 	size_t	i;
 
 	i = 0;
 	while (set[i])
 	{
-		if (set[i] == c)
+		if (c == set[i])
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-char
-	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
 	size_t	i;
-	size_t	start;
-	size_t	end;
+	size_t	count_bgn;
+	size_t	count_end;
+	char	*str;
 
-	start = 0;
-	while (s1[start] && ft_char_in_set(s1[start], set))
-		start++;
-	end = ft_strlen(s1);
-	while (end > start && ft_char_in_set(s1[end - 1], set))
-		end--;
-	str = (char*)malloc(sizeof(*s1) * (end - start + 1));
-	if (!str)
-		return (NULL);
 	i = 0;
-	while (start < end)
-		str[i++] = s1[start++];
-	str[i] = 0;
+	count_bgn = 0;
+	count_end = 0;
+	if (s1[i])
+	{
+		while (ft_check_set(s1[i++], set))
+			count_bgn++;
+		i = ft_strlen(s1) - 1;
+		while (ft_check_set(s1[i--], set))
+			count_end++;
+	}
+	str = ft_substr(s1, count_bgn, ft_strlen(s1) - count_bgn - count_end);
+	if (!str)
+		return (0);
 	return (str);
 }
+
+// int	main(void)
+// {
+// 	char	str[] = "[];hallo;";
+// 	char	set[] = ";][";
+// 	ft_strtrim(str, set);
+// }

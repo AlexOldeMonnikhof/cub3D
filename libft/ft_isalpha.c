@@ -5,16 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 11:04:50 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/14 15:11:28 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/17 16:18:49 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int
-	ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
-	return ((c >= 'A' && c <= 'Z') ||
-			(c >= 'a' && c <= 'z'));
+	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
+		return (1);
+	return (0);
 }
+
+// int	main(void)
+// {
+// 	char c1 = 'Q';
+// 	char c2 = ']';
+
+// 	printf("\neig:\n%d, %d\n", ft_isalpha(c1), ft_isalpha(c2));
+// 	printf("\norg:\n%d, %d\n", isalpha(c1), isalpha(c2));
+// }

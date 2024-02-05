@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 11:10:55 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/14 15:12:41 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/17 16:19:00 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int
-	ft_isprint(int c)
+int	ft_isprint(int c)
 {
-	return (c >= 32 && c <= 126);
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

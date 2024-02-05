@@ -5,21 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 14:49:53 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/19 16:08:06 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/17 16:18:38 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void
-	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
-	ptr = (void*)malloc(count * size);
+	ptr = (void *)malloc(count * size);
 	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, count);
+		return (0);
+	ft_bzero(ptr, count * size);
 	return (ptr);
 }

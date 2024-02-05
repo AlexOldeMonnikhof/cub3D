@@ -5,37 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 14:04:00 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/14 15:13:27 by aolde-mo          #+#    #+#             */
+/*   Updated: 2024/02/05 17:50:24 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-size_t
-	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	j;
-	size_t	dest_length;
-	size_t	src_length;
+	size_t	dst_len;
+	size_t	src_len;
 
-	src_length = ft_strlen(src);
-	dest_length = ft_strlen(dst);
-	j = dest_length;
 	i = 0;
-	if (dest_length < size - 1 && size > 0)
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	while (i < src_len && i + dst_len + 1 < dstsize)
 	{
-		while (src[i] && dest_length + i < size - 1)
-		{
-			dst[j] = src[i];
-			j++;
-			i++;
-		}
-		dst[j] = 0;
+		dst[dst_len + i] = src[i];
+		i++;
 	}
-	if (dest_length >= size)
-		dest_length = size;
-	return (dest_length + src_length);
+	dst[dst_len + i] = 0;
+	if (dstsize < dst_len)
+		return (dstsize + src_len);
+	else
+		return (dst_len + src_len);
 }

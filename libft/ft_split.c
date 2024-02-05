@@ -5,98 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 15:38:59 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/24 12:57:24 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/20 14:10:16 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char
-	**ft_alloc_split(char const *s, char c)
-{
-	size_t	i;
-	char	**split;
-	size_t	total;
-
-	i = 0;
-	total = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			total++;
-		i++;
-	}
-	split = (char**)malloc(sizeof(s) * (total + 2));
-	if (!split)
-		return (NULL);
-	return (split);
-}
-
-void
-	*ft_free_all_split_alloc(char **split, size_t elts)
+static void	ft_free(char **s)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < elts)
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-	return (NULL);
-}
-
-static void
-	*ft_split_range(char **split, char const *s,
-		t_split_next *st, t_split_next *lt)
-{
-	split[lt->length] = ft_substr(s, st->start, st->length);
-	if (!split[lt->length])
-		return (ft_free_all_split_alloc(split, lt->length));
-	lt->length++;
-	return (split);
-}
-
-static void
-	*ft_split_by_char(char **split, char const *s, char c)
-{
-	size_t			i;
-	t_split_next	st;
-	t_split_next	lt;
-
-	i = 0;
-	lt.length = 0;
-	lt.start = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		free(s[i]);
+		i++;
+	}
+	free(s);
+}
+
+static size_t	ft_wrd_count(const char *s, char c)
+{
+	size_t	wrd_count;
+	size_t	i;
+
+	wrd_count = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != c)
 		{
-			st.start = lt.start;
-			st.length = (i - lt.start);
-			if (i > lt.start && !ft_split_range(split, s, &st, &lt))
-				return (NULL);
-			lt.start = i + 1;
+			wrd_count++;
+			while (s[i] != c && s[i])
+				i++;
 		}
+		while (s[i] == c && s[i])
+			i++;
+	}
+	return (wrd_count);
+}
+
+static char	**ft_make_arr(char **str, char const *s, char c, size_t wrd_count)
+{
+	size_t	wrd_len;
+	size_t	i;
+
+	i = 0;
+	while (i < wrd_count)
+	{
+		wrd_len = 0;
+		while (*s == c)
+			s++;
+		while (s[wrd_len] != c && s[wrd_len])
+			wrd_len++;
+		str[i] = ft_substr(s, 0, wrd_len);
+		if (!str[i])
+		{
+			ft_free(str);
+			return (NULL);
+		}
+		s += wrd_len;
 		i++;
 	}
-	st.start = lt.start;
-	st.length = (i - lt.start);
-	if (i > lt.start && i > 0 && !ft_split_range(split, s, &st, &lt))
-		return (NULL);
-	split[lt.length] = 0;
-	return (split);
+	str[i] = NULL;
+	return (str);
 }
 
-char
-	**ft_split(char const *s, char c)
+char	**ft_split(char	const *s, char c)
 {
-	char	**split;
+	char	**str;
+	size_t	wrd_count;
 
-	if (!(split = ft_alloc_split(s, c)))
+	if (!s)
 		return (NULL);
-	if (!ft_split_by_char(split, s, c))
+	wrd_count = ft_wrd_count(s, c);
+	str = (char **)malloc((wrd_count + 1) * sizeof(char *));
+	if (!str)
 		return (NULL);
-	return (split);
+	str = ft_make_arr(str, s, c, wrd_count);
+	return (str);
 }
+
+// int	main(void)
+// {
+// 	char	s[] = "asdiasdiu";
+// 	char	c = '\0';
+// 	char	**str = ft_split(s, c);
+// 	printf("%s\n", str[1]);
+// }

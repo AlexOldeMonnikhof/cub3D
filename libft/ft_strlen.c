@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 10:58:12 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/11/17 16:28:58 by aolde-mo         ###   ########.fr       */
+/*   Created: 2022/10/14 15:14:34 by aolde-mo          #+#    #+#             */
+/*   Updated: 2022/11/17 16:22:26 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t
-	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -22,3 +21,11 @@ size_t
 		i++;
 	return (i);
 }
+
+// int	main(void)
+// {
+// 	char wrd[] = "ushAA5892AJSd";
+
+// 	printf("%zu\n", ft_strlen(wrd));
+// 	printf("%zu\n", strlen(wrd));
+// }
