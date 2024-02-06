@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/05 17:57:38 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/06 10:28:00 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,88 +160,78 @@ void	init_direction(t_data *data);
 # include <stdlib.h>
 
 //open the file
-bool is_map_line(char *line);
+bool		is_map_line(char *line);
 
 //error check
-bool starts_with_map_char(const char *line);
-int find_first_line_map(char **original_array);
-char **extract_map(char **original_array, int original_height);
-int calculate_original_height(char **array);
-void 	error_check(char **old_map, int height);
-int get_l_line(char **array);
+bool		starts_with_map_char(const char *line);
+int			find_first_line_map(char **original_array);
+char		**extract_map(char **original_array, int original_height);
+int			calculate_original_height(char **array);
+void		error_check(char **old_map, int height);
+int			get_l_line(char **array);
 
 
 //----------------------------- PARSING -----------------------------//
+int			check_texture(char **cub, int i, char *texture);
+int			find_first_line_mapp(char **original_a);
+int			parsing(char **twod, t_data *data);
 
-
-int check_three_variables(char *line);
-int find_first_line_mapp(char **original_array); // does not take into consideration map error
-int    parsing(char **twod, t_data *data);
-
-int check_position_c(char *line, char *dir);
-int ft_isspace(int c);
-int is_valid_format(const char *str);
-int validate_numbers_in_range(const char *str);
+//----------------------------- PARSING START -----------------------------//
+static char	**process_line(char **array, char *line, int *num_rows);
+char		**resize_array(char **array, int *capacity, int num_rows);
+char		**initialize_array(int *capacity);
+char		**read_and_store_lines(int fd, char **array, int *n_r, int *cap);
+char		**read_cub_file_to_2d_array(const char *filename, int *num_rows);
 
 //------------------------------FINAL PARSE---------------------------//
-void    final_parse(t_data *data, char **cub);
-void process_wall_textures(t_data *data, char **cub);
-int parse_int(char **str);
-uint32_t rgb_to_uint32(char *rgb_str);
-void process_floor_ceiling_colors(t_data *data, char **cub);
-char *ft_strdup(const char *s);
-void parse_rgb_values(uint32_t *color_array, char *rgb_str);
-void process_map(t_data *data, char **cub);
-int char_to_int(char c, t_data *data);
-void calculate_map_dimensions(char **cub, int *rows, int *cols);
+void		calculate_map_dimensions(char **cub, int *rows, int *cols);
+void		final_parse(t_data *data, char **cub);
+void		parse_rgb_values(uint32_t *color_array, char *rgb_str);
+int			parse_int(char **str);
+uint32_t	rgb_to_uint32(char *rgb_str);
 
-static char **process_line(char **array, char *line, int *num_rows);
-static char **resize_array(char **array, int *capacity, int num_rows);
-static char **initialize_array(int *capacity);
-char **read_cub_file_to_2d_array(const char *filename, int *num_rows);
-int count_rows_in_file(const char *filename);
-void    get_start_direction(char c, t_data *data);
+//----------------------------- ERROR CHECK -----------------------------//
+int			find_first_line_map(char **orig_ar);
+int			count_rows_in_file(const char *filename);
+
+//----------------------------- CHECK TOP-----------------------------//
+int			check_top_map(char **cub, int f_l);
+int			check_position(char *line, char *dir);
+int			check_colors(char *line, char *dir);
+int			check_position_c(char *line, char *dir);
+int			check_three_variables(char *line);
+
+//----------------------------- CHECK TOP END -----------------------------//
+int			is_valid_format(const char *str)
+int			validate_numbers_in_range(const char *str);
+void		process_wall_textures(t_data *data, char **cub);
+int			char_to_int(char c, t_data *data);
+void		process_floor_ceiling_colors(t_data *data, char **cub);
 
 //----------------------------- MAP CHECK -----------------------------//
-int	check_map(char **cub, int f_l, t_data *data);
-int	check_first_line_map(char *line);
-int	check_map_loop(char **cub, int f_l);
-int	check_up_and_main(char *main, char *up);
-int	check_endings_map(char **cub, int start);
+int			check_map(char **cub, int f_l, t_data *data);
+int			check_first_line_map(char *line);
+int			check_map_loop(char **cub, int f_l);
+int			check_up_and_main(char *main, char *up);
+int			check_endings_map(char **cub, int start);
 
 //----------------------------- PLAYER CHECK -----------------------------//
-int		check_player(char **cub, int start, t_data *data);
-void	get_start_direction(char c, t_data *data);
-void findPlayerPosition(char **cub, int start, t_data *data, int *p);
-void processPlayerPosition(int x, int y, t_data *data, char **cub);
-int check_player(char **cub, int start, t_data *data);
-
-//----------------------------- TOP END CHECK -----------------------------//
-int	is_valid_format(const char *str);
-int	validate_numbers_in_range(const char *str);
-
-//----------------------------- TOP CHECK -----------------------------//
-int	check_top_map(char **cub, int f_l);
-int	check_position(char *line, char *dir);
-int	check_colors(char *line, char *dir);
-int	check_position_c(char *line, char *dir);
-int	check_three_variables(char *line);
+void		get_coordinates(t_data *data, char **cub, int start, int i);
+int			check_player(char **cub, int start, t_data *data);
+void		get_start_direction(char c, t_data *data);
 
 //----------------------------- UTILS PARSING -----------------------------//
-char	*str_n_copy(const char *src, int start);
-int	ft_isspace(int c);
-int	check_ends_line(char *line, int start);
-int	check_last_line(char *line);
-char *ft_strcpy(char *dest, const char *src);
+char		*str_n_copy(const char *src, int start);
+int			ft_isspace(int c);
+int			check_ends_line(char *line, int start);
+int			check_last_line(char *line);
+int			find_map_start(char **cub);
 
 //----------------------------- ALLOCATE MAP -----------------------------//
-void process_map(t_data *data, char **cub);
-void	populate_map(t_data *data, char **cub, int rows, int cols);
-void allocate_map_memory(t_data *data, int rows, int cols);
-void calculate_map_dimensions_a(char **cub, int map_start, int *rows, int *cols);
-int find_map_start(char **cub);
-
-static char **read_and_store_lines(int fd, char **array, int *num_rows, int *capacity);
-
+void		process_map(t_data *data, char **cub);
+void		populate_map(t_data *data, char **cub, int rows, int cols);
+void		allocate_map_memory(t_data *data, int rows, int cols);
+void		calculate_map_dimensions_a(char **cub, int map_start, int *rows, int *cols);
+int			find_map_start(char **cub);
 
 #endif
