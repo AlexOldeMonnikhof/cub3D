@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/06 10:28:00 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:44:08 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 # define NOWALL 0
 # define WALL 1
 
-# define mapWidth 24
-# define mapHeight 24
-# define screenWidth 1920
-# define screenHeight 1080
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
@@ -30,8 +28,6 @@
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
-
-extern int world_map[mapWidth][mapHeight];
 
 
 typedef struct	s_player{
@@ -101,7 +97,7 @@ typedef struct	s_data{
 	
 	mlx_texture_t	**text_arr;
 	uint8_t			***pixels;
-	
+
 	int				line_height;
 	int				draw_start;
 	int				draw_end;
@@ -120,44 +116,40 @@ typedef struct	s_data{
 }					t_data;
 
 //main
-int		main(int argc, char **argv);
+int			main(int argc, char **argv);
 
 //init
-void	initialize(t_data *data);
+void		initialize(t_data *data);
 
 //rayzzz
-void	raycasting(t_data *data);
-void	calculate_ray_direction(t_data *data, int x);
-void	calculate_delta_distance(t_ray *ray);
-void	calculate_side_distance(t_player *player, t_ray *ray);
-void	dda(t_data *data, t_ray *ray);
+void		raycasting(t_data *data);
+void		calculate_ray_direction(t_data *data, int x);
+void		calculate_delta_distance(t_ray *ray);
+void		calculate_side_distance(t_player *player, t_ray *ray);
+void		dda(t_data *data, t_ray *ray);
 
 //draw
 void		draw_line(t_data *data, int x);
-void		put_stripe(t_data *data, int x, int y);
+void		put_stripe(t_data *data, int x, int y, int dir);
 
 //hooks
-void	key_hook(void *param);
+void		key_hook(void *param);
 //exit
-void	close_mlx(t_data *data);
-void	cleanup(t_data *data);
+void		close_mlx(t_data *data);
+void		cleanup(t_data *data);
 
 //error
-void	check_input(int argc, char **argv);
-void	*ft_malloc(size_t size);
-void	print_error(char *s);
+void		check_input(int argc, char **argv);
+void		*ft_malloc(size_t size);
+void		print_error(char *s);
 
 //utils
-int		find_direction(t_data *data);
-void	calculate_draw_vars(t_data *data);
-void	free_textures(t_data *data, int texture);
-void	texture_to_doubleptr(t_data *data);
-void	init_direction(t_data *data);
-
-# include "../MLX42/include/MLX42/MLX42.h"
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
+int			find_dir(t_data *data);
+void		calculate_draw_vars(t_data *data);
+void		free_textures(t_data *data, int texture);
+void		texture_to_doubleptr(t_data *data);
+void		init_direction(t_data *data);
+int			find_pixel(t_data *data, double tex_pos);
 
 //open the file
 bool		is_map_line(char *line);
@@ -202,7 +194,7 @@ int			check_position_c(char *line, char *dir);
 int			check_three_variables(char *line);
 
 //----------------------------- CHECK TOP END -----------------------------//
-int			is_valid_format(const char *str)
+int			is_valid_format(const char *str);
 int			validate_numbers_in_range(const char *str);
 void		process_wall_textures(t_data *data, char **cub);
 int			char_to_int(char c, t_data *data);

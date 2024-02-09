@@ -6,13 +6,13 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:57:28 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/09 11:05:57 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:35:29 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int	find_direction(t_data *data)
+int	find_dir(t_data *data)
 {
 	t_ray	*ray;
 

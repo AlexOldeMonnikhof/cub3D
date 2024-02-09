@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:24 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 15:37:01 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:43:32 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ void	*ft_malloc(size_t size)
 	if (!ret)
 		exit(EXIT_FAILURE);
 	return (ret);
+}
+
+int	find_pixel(t_data *data, double tex_pos)
+{
+	mlx_texture_t	*texture;
+
+	texture = data->text_arr[find_dir(data)];
+	return ((int)tex_pos * texture->width + data->ray->x_texture);
 }
