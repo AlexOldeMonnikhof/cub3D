@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:48:11 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/05 17:58:00 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:05:31 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	put_stripe(t_data *data, int x, int y)
 	direction = find_direction(data);
 	texture = data->text_arr[direction];
 	step = (double)texture->height / (double)data->line_height;
-	double texpos = (data->draw_start - screenHeight / 2 + data->line_height / 2) * step;
+	double texpos = (data->draw_start - HEIGHT / 2 + data->line_height / 2) * step;
 
 	calculate_x_wall(data, direction);
 	while (y < data->draw_end)
@@ -78,6 +78,6 @@ void	draw_line(t_data *data, int x)
 		mlx_put_pixel(data->img, x, y++, get_floor_ceiling_rgba(data->F));
 	put_stripe(data, x, y);
 	y += data->draw_end - data->draw_start;
-	while (y < screenHeight)
+	while (y < HEIGHT)
 		mlx_put_pixel(data->img, x, y++, get_floor_ceiling_rgba(data->C));
 }

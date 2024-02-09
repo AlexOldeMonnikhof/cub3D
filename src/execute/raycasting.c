@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:23:37 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 10:45:49 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:21:26 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	calculate_ray_direction(t_data *data, int x)
 
 	ray = data->ray;
 	player = data->player;
-	ray->x_camera = 2 * x / (double)screenWidth - 1;
+	ray->x_camera = 2 * x / (double)WIDTH - 1;
 	ray->x_ray_dir = player->x_dir + player->x_plane * ray->x_camera;
 	ray->y_ray_dir = player->y_dir + player->y_plane * ray->x_camera;
 }
@@ -98,9 +98,9 @@ void	dda(t_data *data, t_ray *ray)
 			wall_is_hit = true;
 	}
 	if (ray->vertical_wall_hit == true)
-		ray->perpendicular_wall_dist = ray->y_side_dist - ray->y_delta_dist;
+		ray->perp_wall_dist = ray->y_side_dist - ray->y_delta_dist;
 	else
-		ray->perpendicular_wall_dist = ray->x_side_dist - ray->x_delta_dist;
+		ray->perp_wall_dist = ray->x_side_dist - ray->x_delta_dist;
 }
 
 void	raycasting(t_data *data)
@@ -112,7 +112,7 @@ void	raycasting(t_data *data)
 	player = data->player;
 	ray = data->ray;
 	x = 0;
-	while (x < screenWidth)
+	while (x < WIDTH)
 	{
 		calculate_ray_direction(data, x);
 		calculate_delta_distance(ray);

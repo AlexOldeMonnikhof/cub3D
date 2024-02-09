@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:57:28 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/30 18:11:55 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:05:57 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	find_direction(t_data *data)
 
 void	calculate_draw_vars(t_data *data)
 {
-	data->line_height = screenHeight / data->ray->perpendicular_wall_dist;
-	data->draw_start = -data->line_height / 2 + screenHeight / 2;
-	data->draw_end = data->line_height / 2 + screenHeight / 2;
+	data->line_height = HEIGHT / data->ray->perp_wall_dist;
+	data->draw_start = -data->line_height / 2 + HEIGHT / 2;
+	data->draw_end = data->line_height / 2 + HEIGHT / 2;
 	if (data->draw_start < 0 || data->draw_start > data->draw_end
-		|| data->draw_start > screenHeight)
+		|| data->draw_start > HEIGHT)
 	{
 		data->draw_start = 0;
-		data->draw_end = screenHeight;
+		data->draw_end = HEIGHT;
 	}
 }
 

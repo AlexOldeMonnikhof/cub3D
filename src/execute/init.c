@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:09:47 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/05 16:55:47 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:06:11 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	initialize(t_data *data)
 	data->player = ft_malloc(sizeof(t_player));
 	init_player(data);
 	data->ray = ft_malloc(sizeof(t_ray));
-	data->mlx = mlx_init(screenWidth, screenHeight, "cub3d", false);
-	data->img = mlx_new_image(data->mlx, screenWidth, screenHeight);
+	data->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
+	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->pixels = ft_malloc(sizeof(uint8_t *) * 4);
 	load_textures(data);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
