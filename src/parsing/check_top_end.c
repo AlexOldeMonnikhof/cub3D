@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:26:36 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/05 15:04:38 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:19:56 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,19 @@ int	validate_numbers_in_range(const char *str)
 void	process_wall_textures(t_data *data, char **cub)
 {
 	int	i;
+	int	start_point;
 
 	i = 0;
 	while (cub[i] != NULL)
 	{
-		if (ft_strncmp(cub[i], "NO ", 3) == 0)
-			data->NO = ft_strdup(cub[i] + 3);
-		else if (ft_strncmp(cub[i], "SO ", 3) == 0)
-			data->SO = ft_strdup(cub[i] + 3);
-		else if (ft_strncmp(cub[i], "WE ", 3) == 0)
-			data->WE = ft_strdup(cub[i] + 3);
-		else if (ft_strncmp(cub[i], "EA ", 3) == 0)
-			data->EA = ft_strdup(cub[i] + 3);
+		if (ft_strncmp_c(cub[i], "NO ", 3) == 0)
+			data->NO = ft_strdup(cub[i] + get_start_point(cub[i]));
+		else if (ft_strncmp_c(cub[i], "SO ", 3) == 0)
+			data->SO = ft_strdup(cub[i] + get_start_point(cub[i]));
+		else if (ft_strncmp_c(cub[i], "WE ", 3) == 0)
+			data->WE = ft_strdup(cub[i] + get_start_point(cub[i]));
+		else if (ft_strncmp_c(cub[i], "EA ", 3) == 0)
+			data->EA = ft_strdup(cub[i] + get_start_point(cub[i]));
 		i++;
 	}
 }
@@ -92,12 +93,12 @@ void	process_floor_ceiling_colors(t_data *data, char **cub)
 	i = 0;
 	while (cub[i] != NULL)
 	{
-		if (ft_strncmp(cub[i], "F ", 2) == 0)
+		if (ft_strncmp_c(cub[i], "F ", 2) == 0)
 		{
 			data->F = malloc(3 * sizeof(uint32_t));
 			parse_rgb_values(data->F, cub[i] + 2);
 		}
-		else if (strncmp(cub[i], "C ", 2) == 0)
+		else if (ft_strncmp_c(cub[i], "C ", 2) == 0)
 		{
 			data->C = malloc(3 * sizeof(uint32_t));
 			parse_rgb_values(data->C, cub[i] + 2);

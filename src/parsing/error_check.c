@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:58:32 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/05 14:53:53 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:08:47 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	find_first_line_map(char **orig_ar)
 		if (orig_ar[index][i] == '1' || orig_ar[index][i] == '0')
 			return (index);
 		else
+		{
+			i = 0;
 			index++;
+		}
 	}
 	return (-1);
 }

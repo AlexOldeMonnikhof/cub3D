@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:58:49 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/05 16:04:12 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:19:24 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,48 @@ int	parsing(char **twod, t_data *data)
 {
 	int	error;
 	int	f_l;
+	int	error_dos;
 
 	f_l = 0;
 	error = 0;
 	f_l = find_first_line_map(twod);
 	error = check_top_map(twod, f_l);
-	if (error == -1)
+	error_dos = check_amount(twod, f_l);
+	if (error == -1 || error_dos == -1)
+	{
+		printf("Error\nInvalid top mapppppoo\n");
 		return (-1);
+	}
 	error = check_map(twod, f_l, data);
 	if (error == -1)
+		return (-1);
+	return (1);
+}
+
+int	check_amount(char **cub, int f_l)
+{
+	int	i;
+	int	count;
+
+	count = 0;
+	i = 0;
+	while (i < f_l)
+	{
+		if (ft_strnstr(cub[i], "NO ", ft_strlen(cub[i])))
+			count += check_position(cub[i], "NO ");
+		if (ft_strnstr(cub[i], "SO ", ft_strlen(cub[i])))
+			count += check_position(cub[i], "SO ");
+		if (ft_strnstr(cub[i], "WE ", ft_strlen(cub[i])))
+			count += check_position(cub[i], "WE ");
+		if (ft_strnstr(cub[i], "EA ", ft_strlen(cub[i])))
+			count += check_position(cub[i], "EA ");
+		if (ft_strnstr(cub[i], "C ", ft_strlen(cub[i])))
+			count += check_colors(cub[i], "C ");
+		if (ft_strnstr(cub[i], "F ", ft_strlen(cub[i])))
+			count += check_colors(cub[i], "F ");
+		i++;
+	}
+	if (count != 6)
 		return (-1);
 	return (1);
 }

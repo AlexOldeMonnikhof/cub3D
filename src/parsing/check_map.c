@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:27:53 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/05 11:58:18 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:18:17 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ int	check_map_loop(char **cub, int f_l)
 	{
 		error = check_up_and_main(cub[i], cub[i - 1]);
 		if (error == -1)
+		{
+			printf("error in maploop: %d\n", error);
 			return (-1);
+		}
 		i++;
 	}
 	return (1);
