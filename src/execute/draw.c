@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:48:11 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/09 11:43:47 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/11 16:04:34 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ static void	calculate_x_wall(t_data *data, int direction)
 
 void	put_stripe(t_data *data, int x, int y, int dir)
 {
-	mlx_texture_t	*texture;
-	double			tex_pos;
+	mlx_texture_t	*text;
+	double			tex_p;
 	double			step;
-	uint32_t		color;
+	uint32_t		clr;
 
-	texture = data->text_arr[dir];
-	step = (double)texture->height / (double)data->line_height;
-	tex_pos = (data->draw_start - HEIGHT / 2 + data->line_height / 2) * step;
+	text = data->text_arr[dir];
+	step = (double)text->height / (double)data->line_height;
+	tex_p = (data->draw_start - HEIGHT / 2 + data->line_height / 2) * step;
 	calculate_x_wall(data, dir);
 	while (y < data->draw_end)
 	{
-		color = get_pixel_rgba(data->pixels[dir][find_pixel(data, tex_pos)]);
-		mlx_put_pixel(data->img, x, y, color);
-		tex_pos += step;
+		clr = data->pixels[dir][(int)tex_p * text->width + data->ray->x_texture];
+		mlx_put_pixel(data->img, x, y, clr);
+		tex_p += step;
 		y++;
 	}
 }

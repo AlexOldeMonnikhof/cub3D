@@ -6,13 +6,13 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:20 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/01/31 14:10:03 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:07 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static void	init_north_south(t_data *data)
+void	init_north_south(t_data *data)
 {
 	t_player	*player;
 
@@ -33,7 +33,7 @@ static void	init_north_south(t_data *data)
 	}
 }
 
-static void	init_east_west(t_data *data)
+void	init_east_west(t_data *data)
 {
 	t_player	*player;
 
@@ -52,12 +52,4 @@ static void	init_east_west(t_data *data)
 		player->x_plane = 0;
 		player->y_plane = -0.66;
 	}
-}
-
-void	init_direction(t_data *data)
-{
-	if (data->start_direction == NORTH || data->start_direction == SOUTH)
-		init_north_south(data);
-	else
-		init_east_west(data);
 }

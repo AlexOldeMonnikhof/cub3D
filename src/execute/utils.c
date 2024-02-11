@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:57:28 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/09 11:35:29 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/11 15:44:57 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,50 +44,43 @@ void	free_textures(t_data *data, int texture)
 	int	i;
 
 	i = 0;
-	while (i < data->text_arr[texture]->width * data->text_arr[texture]->height)
-		free(data->pixels[texture][i++]);
-	free(data->pixels[texture]);
 	mlx_delete_texture(data->text_arr[texture]);
 }
 
-// filling our pixel array with the data from the texture->pixels array.
-// i * 4 + j, so we take steps of 4 because we want every rgba value for each i.
-static void	fill_pixel_arr(t_data *data, int pixel_count, int direction)
-{
-	uint8_t	pixel;
-	int		i;
-	int		j;
 
-	i = 0;
-	while (i < pixel_count)
-	{
-		data->pixels[direction][i] = ft_malloc(sizeof(uint8_t) * 4);
-		j = 0;
-		while (j < 4)
-		{
-			pixel = data->text_arr[direction]->pixels[i * 4 + j];
-			data->pixels[direction][i][j] = pixel;
-			j++;
-		}
-		i++;
-	}
+static uint32_t	rgba_to_uint(uint8_t *pixels, int i)
+{
+	uint32_t	ret;
+
+	pixels += i * 4;
+	ret = 0;
+	ret += (uint32_t)*pixels++ << 24;
+	ret += (uint32_t)*pixels++ << 16;
+	ret += (uint32_t)*pixels++ << 8;
+	ret += (uint32_t)255;
+	return (ret);
 }
 
-// pixel array has 4 unsigned chars per pixel (rgba)
-// pixels looks as follows:
-// ***pixel = which texture (north, east, south, west)
-// **pixel = which pixel we're at. we go from left to right then top to bottom.
-// *pixel = rgba value of pixel (only 4 chars), 0 = r, 1 = g, 2 = b, 3 = a.
+// **pixels = north, east, south, west
+// *pixels = uint32_t color code for every pixel.
 void	texture_to_doubleptr(t_data *data)
 {
 	int	pixel_count;
 	int	i;
+	int	j;
 
 	i = 0;
 	while (i < 4)
 	{
 		pixel_count = data->text_arr[i]->width * data->text_arr[i]->height;
-		data->pixels[i] = ft_malloc(sizeof(uint8_t *) * pixel_count);
-		fill_pixel_arr(data, pixel_count, i++);
+		data->pixels[i] = ft_malloc(sizeof(uint32_t) * pixel_count);
+		//PROTECT
+		j = 0;
+		while (j < pixel_count)
+		{
+			data->pixels[i][j] = rgba_to_uint(data->text_arr[i]->pixels, j);
+			j++;
+		}
+		i++;
 	}
 }
