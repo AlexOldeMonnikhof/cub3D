@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/09 11:44:08 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:51:17 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct	s_data{
 	t_ray			*ray;
 	
 	mlx_texture_t	**text_arr;
-	uint8_t			***pixels;
+	uint32_t		**pixels;
 
 	int				line_height;
 	int				draw_start;
@@ -148,7 +148,9 @@ int			find_dir(t_data *data);
 void		calculate_draw_vars(t_data *data);
 void		free_textures(t_data *data, int texture);
 void		texture_to_doubleptr(t_data *data);
-void		init_direction(t_data *data);
+void		init_north_south(t_data *data);
+void		init_east_west(t_data *data);
+
 int			find_pixel(t_data *data, double tex_pos);
 
 //open the file

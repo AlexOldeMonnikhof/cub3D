@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:49:09 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/05 16:55:02 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/11 16:11:29 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <math.h>
 
-#define MOVE_SPEED 0.21
+#define MOVE_SPEED 0.11
 #define ROT_SPD 0.0625
 
 #define POV_MIN 0.2
