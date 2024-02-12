@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:26:36 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/12 15:09:52 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:14:36 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	process_wall_textures(t_data *data, char **cub)
 
 int	char_to_int(char c)
 {
-	if (c == '1')
+	if (c == '1' || c == ' ')
 		return (1);
-	if (c == '0' || c == ' ' || (c >= 0 && c <= 3))
+	if (c == '0' || (c >= 0 && c <= 3))
 		return (0);
 	return (-1);
 }
