@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 14:56:19 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:16:43 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,8 @@
 # include "../libft/libft.h"
 # include "get_next_line.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
-#include <unistd.h>
-
-
-typedef struct	s_player{
+typedef struct s_player
+{
 // position of player
 	double		x_pos;
 	double		y_pos;
@@ -42,22 +36,25 @@ typedef struct	s_player{
 	double		y_plane;
 }				t_player;
 
-typedef struct	s_ray{
+typedef struct s_ray
+{
 // camera plane
 	double		x_camera;
 // the map position of the player
 	int			x_map;
 	int			y_map;
-// side_dist is the distance TO the first wall hit from x or y from the starting position
+// side_dist is the distance TO the first wall hit
+// from x or y from the starting position
 	double		x_side_dist;
 	double		y_side_dist;
-// delta_dist is the distance FROM the first wall hit to the next wall in the x or y axes
+// delta_dist is the distance FROM the first wall hit 
+// to the next wall in the x or y axes
 	double		x_delta_dist;
 	double		y_delta_dist;
 // dir the ray is going
 	double		x_ray_dir;
 	double		y_ray_dir;
-// to calculate perpendicular distance to wall from camera pov (not the player position)
+// to calculate perpendicular distance to wall from camera pov
 // we calculate from camera pov to avoid fisheye effect
 	double		perp_wall_dist;
 // negative or positive step direction
@@ -71,7 +68,7 @@ typedef struct	s_ray{
 	bool		vertical_wall_hit;
 }				t_ray;
 
-typedef enum	e_movement
+typedef enum e_movement
 {
 	LEFT,
 	RIGHT,
@@ -81,7 +78,7 @@ typedef enum	e_movement
 	ROTATE_RIGHT,
 }				t_movement;
 
-typedef enum	e_direction
+typedef enum e_direction
 {
 	NORTH,
 	EAST,
@@ -89,12 +86,13 @@ typedef enum	e_direction
 	WEST,
 }				t_direction;
 
-typedef struct	s_data{
+typedef struct s_data
+{
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_player		*player;
 	t_ray			*ray;
-	
+
 	mlx_texture_t	**text_arr;
 	uint32_t		**pixels;
 
@@ -104,12 +102,12 @@ typedef struct	s_data{
 
 	int				**map;
 	int				firstline_map;
-	char			*WE;
-	char			*NO;
-	char			*SO;
-	char			*EA;
-	uint32_t		*F;
-	uint32_t		*C;
+	char			*we;
+	char			*no;
+	char			*so;
+	char			*ea;
+	uint32_t		*f;
+	uint32_t		*c;
 	int				x_player;
 	int				y_player;
 	t_direction		start_direction;
@@ -153,17 +151,8 @@ void		init_east_west(t_data *data);
 
 int			find_pixel(t_data *data, double tex_pos);
 
-//open the file
-bool		is_map_line(char *line);
-
 //error check
-bool		starts_with_map_char(const char *line);
 int			find_first_line_map(char **original_array);
-char		**extract_map(char **original_array, int original_height);
-int			calculate_original_height(char **array);
-void		error_check(char **old_map, int height);
-int			get_l_line(char **array);
-
 
 //----------------------------- PARSING -----------------------------//
 int			check_texture(char **cub, int i, char *texture);
@@ -171,7 +160,6 @@ int			find_first_line_mapp(char **original_a);
 int			parsing(char **twod, t_data *data);
 
 //----------------------------- PARSING START -----------------------------//
-static char	**process_line(char **array, char *line, int *num_rows);
 char		**resize_array(char **array, int *capacity, int num_rows);
 char		**initialize_array(int *capacity);
 char		**read_and_store_lines(int fd, char **array, int *n_r, int *cap);
@@ -199,7 +187,7 @@ int			check_three_variables(char *line);
 int			is_valid_format(const char *str);
 int			validate_numbers_in_range(const char *str);
 void		process_wall_textures(t_data *data, char **cub);
-int			char_to_int(char c, t_data *data);
+int			char_to_int(char c);
 void		process_floor_ceiling_colors(t_data *data, char **cub);
 
 //----------------------------- MAP CHECK -----------------------------//
@@ -217,7 +205,7 @@ void		get_start_direction(char c, t_data *data);
 //----------------------------- UTILS PARSING -----------------------------//
 char		*str_n_copy(const char *src, int start);
 int			ft_isspace(int c);
-int			check_ends_line(char *line, int start);
+int			check_ends_line(char *line);
 int			check_last_line(char *line);
 int			find_map_start(char **cub);
 
@@ -225,7 +213,7 @@ int			find_map_start(char **cub);
 void		process_map(t_data *data, char **cub);
 void		populate_map(t_data *data, char **cub, int rows, int cols);
 void		allocate_map_memory(t_data *data, int rows, int cols);
-void		calculate_map_dimensions_a(char **cub, int map_start, int *rows, int *cols);
+void		calc_map_dimension(char **cub, int map_start, int *rows, int *cols);
 int			find_map_start(char **cub);
 int			ft_strncmp_c(const char *s1, const char *s2, size_t n);
 int			get_start_point(char *line);

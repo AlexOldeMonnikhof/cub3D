@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_top_end.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:26:36 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/09 17:19:56 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:09:52 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,23 @@ int	validate_numbers_in_range(const char *str)
 void	process_wall_textures(t_data *data, char **cub)
 {
 	int	i;
-	int	start_point;
 
 	i = 0;
 	while (cub[i] != NULL)
 	{
 		if (ft_strncmp_c(cub[i], "NO ", 3) == 0)
-			data->NO = ft_strdup(cub[i] + get_start_point(cub[i]));
+			data->no = ft_strdup(cub[i] + get_start_point(cub[i]));
 		else if (ft_strncmp_c(cub[i], "SO ", 3) == 0)
-			data->SO = ft_strdup(cub[i] + get_start_point(cub[i]));
+			data->so = ft_strdup(cub[i] + get_start_point(cub[i]));
 		else if (ft_strncmp_c(cub[i], "WE ", 3) == 0)
-			data->WE = ft_strdup(cub[i] + get_start_point(cub[i]));
+			data->we = ft_strdup(cub[i] + get_start_point(cub[i]));
 		else if (ft_strncmp_c(cub[i], "EA ", 3) == 0)
-			data->EA = ft_strdup(cub[i] + get_start_point(cub[i]));
+			data->ea = ft_strdup(cub[i] + get_start_point(cub[i]));
 		i++;
 	}
 }
 
-int	char_to_int(char c, t_data *data)
+int	char_to_int(char c)
 {
 	if (c == '1')
 		return (1);
@@ -95,13 +94,13 @@ void	process_floor_ceiling_colors(t_data *data, char **cub)
 	{
 		if (ft_strncmp_c(cub[i], "F ", 2) == 0)
 		{
-			data->F = malloc(3 * sizeof(uint32_t));
-			parse_rgb_values(data->F, cub[i] + 2);
+			data->f = malloc(3 * sizeof(uint32_t));
+			parse_rgb_values(data->f, cub[i] + 2);
 		}
 		else if (ft_strncmp_c(cub[i], "C ", 2) == 0)
 		{
-			data->C = malloc(3 * sizeof(uint32_t));
-			parse_rgb_values(data->C, cub[i] + 2);
+			data->c = malloc(3 * sizeof(uint32_t));
+			parse_rgb_values(data->c, cub[i] + 2);
 		}
 		i++;
 	}

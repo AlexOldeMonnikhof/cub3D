@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:57:28 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 14:57:47 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:17:07 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static uint32_t	rgba_to_uint(uint8_t *pixels, int i)
 
 	pixels += i * 4;
 	ret = 0;
-	ret += (uint32_t)(*pixels)++ << 24;
-	ret += (uint32_t)(*pixels)++ << 16;
-	ret += (uint32_t)(*pixels)++ << 8;
-	ret += (uint32_t)255;
+	ret += *pixels++ << 24;
+	ret += *pixels++ << 16;
+	ret += *pixels++ << 8;
+	ret += 255;
 	return (ret);
 }
 
@@ -73,7 +73,6 @@ void	texture_to_doubleptr(t_data *data)
 	{
 		pixel_count = data->text_arr[i]->width * data->text_arr[i]->height;
 		data->pixels[i] = ft_malloc(sizeof(uint32_t) * pixel_count);
-		//PROTECT
 		j = 0;
 		while (j < pixel_count)
 		{

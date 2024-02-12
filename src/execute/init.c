@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:09:47 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/11 15:16:52 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:08:56 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	init_player(t_data *data)
 void	load_textures(t_data *data)
 {
 	data->text_arr = ft_malloc(sizeof(mlx_texture_t *) * 4);
-	data->text_arr[NORTH] = mlx_load_png(data->NO);
-	data->text_arr[EAST] = mlx_load_png(data->EA);
-	data->text_arr[SOUTH] = mlx_load_png(data->SO);
-	data->text_arr[WEST] = mlx_load_png(data->WE);
+	data->text_arr[NORTH] = mlx_load_png(data->no);
+	data->text_arr[EAST] = mlx_load_png(data->ea);
+	data->text_arr[SOUTH] = mlx_load_png(data->so);
+	data->text_arr[WEST] = mlx_load_png(data->we);
 	if (!data->text_arr[NORTH] || !data->text_arr[EAST]
 		|| !data->text_arr[SOUTH] || !data->text_arr[WEST])
 		exit(1);

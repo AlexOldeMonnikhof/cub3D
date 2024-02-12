@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pars_start.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/09 17:04:50 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:07:29 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+#include <fcntl.h>
 
 #define INITIAL_CAPACITY 10
 
