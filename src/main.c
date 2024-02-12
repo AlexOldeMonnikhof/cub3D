@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/05 17:56:16 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/11 16:13:57 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 static void	game(t_data *data)
 {
-	raycasting(data);
+	// raycasting(data);
+	// printf("%d\n", data->map[0][20]);
 	mlx_loop_hook(data->mlx, &key_hook, data);
 	mlx_loop(data->mlx);
 }
