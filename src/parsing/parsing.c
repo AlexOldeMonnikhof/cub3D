@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:58:49 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/09 17:19:24 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:24:13 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,8 @@ int	parsing(char **twod, t_data *data)
 	f_l = find_first_line_map(twod);
 	error = check_top_map(twod, f_l);
 	error_dos = check_amount(twod, f_l);
-	if (error == -1 || error_dos == -1)
-	{
-		printf("Error\nInvalid top mapppppoo\n");
+	if (error == -1 || error_dos == -1 || f_l == -1)
 		return (-1);
-	}
 	error = check_map(twod, f_l, data);
 	if (error == -1)
 		return (-1);

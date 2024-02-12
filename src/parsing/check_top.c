@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:21:59 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/09 17:19:33 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:23:40 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_position(char *line, char *dir)
 	str = str_n_copy(line, i);
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		exit(EXIT_FAILURE);
+		return (-1);
 	free(str);
 	return (1);
 }
@@ -82,6 +82,12 @@ int	check_colors(char *line, char *dir)
 	if (error != 0)
 		return (0);
 	error = validate_numbers_in_range(line);
+	if (error != 0)
+		return (0);
+	error = check_commas(line);
+	if (error != 0)
+		return (0);
+	error = check_valid_chars(line);
 	if (error != 0)
 		return (0);
 	return (1);

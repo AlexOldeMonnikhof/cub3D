@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:19:14 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/09 17:20:24 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:23:49 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,39 @@ int	ft_strncmp_c(const char *s1, const char *s2, size_t n)
 			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
 		i++;
 	}
+	return (0);
+}
+
+int	check_commas(char *line)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] == ',')
+			count++;
+		i++;
+	}
+	if (count != 2)
+		return (3);
+	return (0);
+}
+
+int	check_valid_chars(char *line)
+{
+	int	i;
+
+	i = 0;
+	while ((line[i] >= '0' && line[i] <= '9')
+		|| line[i] == ' ' || line[i] == 'C'
+		|| line[i] == ',' || line[i] == 'F')
+		i++;
+	while (line[i] == ' ')
+		i++;
+	if (line[i] != '\0')
+		return (-1);
 	return (0);
 }
