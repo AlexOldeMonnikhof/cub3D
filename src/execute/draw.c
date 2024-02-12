@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:48:11 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/11 16:04:34 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:58:22 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	put_stripe(t_data *data, int x, int y, int dir)
 	mlx_texture_t	*text;
 	double			tex_p;
 	double			step;
-	uint32_t		clr;
+	uint32_t		cl;
 
 	text = data->text_arr[dir];
 	step = (double)text->height / (double)data->line_height;
@@ -59,8 +59,8 @@ void	put_stripe(t_data *data, int x, int y, int dir)
 	calculate_x_wall(data, dir);
 	while (y < data->draw_end)
 	{
-		clr = data->pixels[dir][(int)tex_p * text->width + data->ray->x_texture];
-		mlx_put_pixel(data->img, x, y, clr);
+		cl = data->pixels[dir][(int)tex_p * text->width + data->ray->x_texture];
+		mlx_put_pixel(data->img, x, y, cl);
 		tex_p += step;
 		y++;
 	}

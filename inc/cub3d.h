@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/11 14:51:17 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:56:19 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,5 +227,9 @@ void		populate_map(t_data *data, char **cub, int rows, int cols);
 void		allocate_map_memory(t_data *data, int rows, int cols);
 void		calculate_map_dimensions_a(char **cub, int map_start, int *rows, int *cols);
 int			find_map_start(char **cub);
+int			ft_strncmp_c(const char *s1, const char *s2, size_t n);
+int			get_start_point(char *line);
+int			check_valid_chars(char *line);
+int			check_commas(char *line);
 
 #endif

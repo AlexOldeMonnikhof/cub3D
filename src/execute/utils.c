@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:57:28 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/11 15:44:57 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:57:47 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,15 @@ void	free_textures(t_data *data, int texture)
 	mlx_delete_texture(data->text_arr[texture]);
 }
 
-
 static uint32_t	rgba_to_uint(uint8_t *pixels, int i)
 {
 	uint32_t	ret;
 
 	pixels += i * 4;
 	ret = 0;
-	ret += (uint32_t)*pixels++ << 24;
-	ret += (uint32_t)*pixels++ << 16;
-	ret += (uint32_t)*pixels++ << 8;
+	ret += (uint32_t)(*pixels)++ << 24;
+	ret += (uint32_t)(*pixels)++ << 16;
+	ret += (uint32_t)(*pixels)++ << 8;
 	ret += (uint32_t)255;
 	return (ret);
 }

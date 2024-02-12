@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:58:49 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/11 17:24:13 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:52:44 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,6 @@ int	find_first_line_mapp(char **original_a)
 	return (-1);
 }
 
-int	parsing(char **twod, t_data *data)
-{
-	int	error;
-	int	f_l;
-	int	error_dos;
-
-	f_l = 0;
-	error = 0;
-	f_l = find_first_line_map(twod);
-	error = check_top_map(twod, f_l);
-	error_dos = check_amount(twod, f_l);
-	if (error == -1 || error_dos == -1 || f_l == -1)
-		return (-1);
-	error = check_map(twod, f_l, data);
-	if (error == -1)
-		return (-1);
-	return (1);
-}
-
 int	check_amount(char **cub, int f_l)
 {
 	int	i;
@@ -84,6 +65,25 @@ int	check_amount(char **cub, int f_l)
 		i++;
 	}
 	if (count != 6)
+		return (-1);
+	return (1);
+}
+
+int	parsing(char **twod, t_data *data)
+{
+	int	error;
+	int	f_l;
+	int	error_dos;
+
+	f_l = 0;
+	error = 0;
+	f_l = find_first_line_map(twod);
+	error = check_top_map(twod, f_l);
+	error_dos = check_amount(twod, f_l);
+	if (error == -1 || error_dos == -1 || f_l == -1)
+		return (-1);
+	error = check_map(twod, f_l, data);
+	if (error == -1)
 		return (-1);
 	return (1);
 }
