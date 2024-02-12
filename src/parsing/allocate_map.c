@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:43:16 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/05 16:22:24 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:16:51 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	process_map(t_data *data, char **cub)
 	int	map_start;
 
 	map_start = find_map_start(cub);
-	calculate_map_dimensions_a(cub, map_start, &rows, &cols);
+	calc_map_dimension(cub, map_start, &rows, &cols);
 	allocate_map_memory(data, rows, cols);
 	populate_map(data, cub, rows, cols);
 }
@@ -50,7 +50,7 @@ void	populate_map(t_data *data, char **cub, int rows, int cols)
 		while (j < cols)
 		{
 			c = get_map_char(cub, map_start, i, j);
-			data->map[i][j] = char_to_int(c, data);
+			data->map[i][j] = char_to_int(c);
 			j++;
 		}
 		i++;
@@ -70,7 +70,7 @@ void	allocate_map_memory(t_data *data, int rows, int cols)
 	}
 }
 
-void	calculate_map_dimensions_a(char **cub, int map_s, int *r, int *c)
+void	calc_map_dimension(char **cub, int map_s, int *r, int *c)
 {
 	int	len;
 	int	i;

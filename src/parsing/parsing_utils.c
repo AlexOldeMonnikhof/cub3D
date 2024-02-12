@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:24:50 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/05 16:18:42 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:03:39 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_isspace(int c)
 		|| c == '\t' || c == '\v');
 }
 
-int	check_ends_line(char *line, int start)
+int	check_ends_line(char *line)
 {
 	int	i;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:27:53 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/11 17:06:44 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:03:58 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	check_endings_map(char **cub, int start)
 	start++;
 	while (cub[start] != NULL)
 	{
-		error = check_ends_line(cub[start], start);
+		error = check_ends_line(cub[start]);
 		if (error == -1)
 			return (-1);
 		start++;

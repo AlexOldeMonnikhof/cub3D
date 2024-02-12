@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   final_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:57:30 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/09 17:10:10 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:09:26 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+#include <stdio.h>
 
 void	calculate_map_dimensions(char **cub, int *rows, int *cols)
 {
@@ -39,12 +41,12 @@ void	final_parse(t_data *data, char **cub)
 
 	process_wall_textures(data, cub);
 	process_floor_ceiling_colors(data, cub);
-	if (data->F)
-		printf("F: %u, %u, %u\n", data->F[0], data->F[1], data->F[2]);
+	if (data->f)
+		printf("F: %u, %u, %u\n", data->f[0], data->f[1], data->f[2]);
 	else
 		printf("F data not available\n");
-	if (data->C)
-		printf("C: %u, %u, %u\n", data->C[0], data->C[1], data->C[2]);
+	if (data->c)
+		printf("C: %u, %u, %u\n", data->c[0], data->c[1], data->c[2]);
 	else
 		printf("C data not available\n");
 	process_map(data, cub);

@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:58:32 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/11 15:49:20 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:07:04 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+#include <stdio.h>
+#include <fcntl.h>
 
 int	find_first_line_map(char **orig_ar)
 {
