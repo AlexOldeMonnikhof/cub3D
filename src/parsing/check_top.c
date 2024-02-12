@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:21:59 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/05 16:19:34 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/11 17:23:40 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ int	check_top_map(char **cub, int f_l)
 	while (i < f_l)
 	{
 		if (ft_strnstr(cub[i], "NO ", ft_strlen(cub[i])))
-			count += check_position(cub[i], "NO ");
+			count += check_position(cub[i], "NO ") + 1;
 		if (ft_strnstr(cub[i], "SO ", ft_strlen(cub[i])))
-			count += check_position(cub[i], "SO ");
+			count += check_position(cub[i], "SO ") + 3;
 		if (ft_strnstr(cub[i], "WE ", ft_strlen(cub[i])))
-			count += check_position(cub[i], "WE ");
+			count += check_position(cub[i], "WE ") + 5;
 		if (ft_strnstr(cub[i], "EA ", ft_strlen(cub[i])))
-			count += check_position(cub[i], "EA ");
+			count += check_position(cub[i], "EA ") + 7;
 		if (ft_strnstr(cub[i], "C ", ft_strlen(cub[i])))
-			count += check_colors(cub[i], "C ");
+			count += check_colors(cub[i], "C ") + 9;
 		if (ft_strnstr(cub[i], "F ", ft_strlen(cub[i])))
-			count += check_colors(cub[i], "F ");
+			count += check_colors(cub[i], "F ") + 11;
 		i++;
 	}
-	if (count != 6)
+	if (count != 42)
 		return (-1);
 	return (1);
 }
@@ -63,7 +63,7 @@ int	check_position(char *line, char *dir)
 	str = str_n_copy(line, i);
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		exit(EXIT_FAILURE);
+		return (-1);
 	free(str);
 	return (1);
 }
@@ -82,6 +82,12 @@ int	check_colors(char *line, char *dir)
 	if (error != 0)
 		return (0);
 	error = validate_numbers_in_range(line);
+	if (error != 0)
+		return (0);
+	error = check_commas(line);
+	if (error != 0)
+		return (0);
+	error = check_valid_chars(line);
 	if (error != 0)
 		return (0);
 	return (1);
@@ -103,6 +109,8 @@ int	check_position_c(char *line, char *dir)
 		i++;
 		j++;
 	}
+	while (line[i] == ' ')
+		i++;
 	if (line[i] < '0' || line[i] > '9')
 		return (1);
 	while (line[i] == ' ' || line[i] == '\t')
