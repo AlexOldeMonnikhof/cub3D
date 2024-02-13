@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 14:26:29 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:20:15 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,5 +223,5 @@ int			get_start_point(char *line);
 int			check_valid_chars(char *line);
 int			check_commas(char *line);
 
-void		clean_cub_data(t_data *data, char **cub_data, int num_rows);
+void		clean_cub_data(char **cub_data, int num_rows, bool valid);
 #endif

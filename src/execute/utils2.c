@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:24 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 14:19:07 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:03:47 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_error(char *s)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(s, 2);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 void	check_input(int argc, char **argv)
@@ -36,6 +36,9 @@ void	*ft_malloc(size_t size)
 
 	ret = malloc(size);
 	if (!ret)
+	{
+		printf("Error\nMalloc error\n");
 		exit(EXIT_FAILURE);
+	}
 	return (ret);
 }

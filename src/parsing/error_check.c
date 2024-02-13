@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:58:32 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/12 15:07:04 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:05:11 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	count_rows_in_file(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Error opening file");
-		return (-1);
+		printf("Error\nCould not open .cub file\n");
+		exit(EXIT_FAILURE);
 	}
 	num_rows = 0;
 	line = get_next_line(fd);
