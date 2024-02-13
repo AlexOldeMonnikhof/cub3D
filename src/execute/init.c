@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:09:47 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 15:08:56 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:46:29 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_player(t_data *data)
 
 void	load_textures(t_data *data)
 {
-	data->text_arr = ft_malloc(sizeof(mlx_texture_t *) * 4);
+	data->text_arr = ft_malloc(sizeof(mlx_texture_t *) * 4, data);
 	data->text_arr[NORTH] = mlx_load_png(data->no);
 	data->text_arr[EAST] = mlx_load_png(data->ea);
 	data->text_arr[SOUTH] = mlx_load_png(data->so);
@@ -47,29 +47,14 @@ void	close_mlx(t_data *data)
 	mlx_delete_image(data->mlx, data->img);
 }
 
-void	cleanup(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < 4)
-		free_textures(data, i++);
-	mlx_terminate(data->mlx);
-	free(data->text_arr);
-	free(data->pixels);
-	free(data->player);
-	free(data->ray);
-	free(data);
-}
-
 void	initialize(t_data *data)
 {
-	data->player = ft_malloc(sizeof(t_player));
+	data->player = ft_malloc(sizeof(t_player), data);
 	init_player(data);
-	data->ray = ft_malloc(sizeof(t_ray));
+	data->ray = ft_malloc(sizeof(t_ray), data);
 	data->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", false);
 	data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->pixels = ft_malloc(sizeof(uint32_t *) * 4);
+	data->pixels = ft_malloc(sizeof(uint32_t *) * 4, data);
 	load_textures(data);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }
