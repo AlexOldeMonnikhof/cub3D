@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:57:12 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 18:46:50 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 11:01:54 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*make_raw_line(char *line, char *buffer, int fd)
 				return (NULL);
 			line[0] = '\0';
 		}
-		line = ft_strjoin(line, buffer);
+		line = ft_strjoin_gnl(line, buffer);
 		if (!line)
 			return (NULL);
 	}

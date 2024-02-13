@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:57:27 by aolde-mo          #+#    #+#             */
-/*   Updated: 2023/12/20 11:33:47 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/13 11:03:49 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1
 # endif
 
 # include <stdlib.h>
@@ -27,8 +27,7 @@ char	*make_raw_line(char *line, char *buffer, int fd);
 char	*make_leftover_line(char *return_line);
 // utils
 size_t	ft_strlen(const char *s);
-//char	*ft_strjoin(char *s1, char *s2);
-//size_t	ft_strchr(char *s, char c);
+char	*ft_strjoin_gnl(char *line, char *buff);
 char	*ft_free(char **ptr);
 
 #endif
