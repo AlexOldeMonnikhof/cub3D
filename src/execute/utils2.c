@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:24 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 18:44:52 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:19:07 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,12 @@ void	check_input(int argc, char **argv)
 		print_error("File must be *.cub\n");
 }
 
-void	*ft_malloc(size_t size, t_data *data)
+void	*ft_malloc(size_t size)
 {
 	void	*ret;
 
 	ret = malloc(size);
 	if (!ret)
-		cleanup(data);
+		exit(EXIT_FAILURE);
 	return (ret);
-}
-
-int	find_pixel(t_data *data, double tex_pos)
-{
-	mlx_texture_t	*texture;
-
-	texture = data->text_arr[find_dir(data)];
-	return ((int)tex_pos * texture->width + data->ray->x_texture);
 }

@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 19:08:35 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:26:29 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,12 +138,13 @@ void		put_stripe(t_data *data, int x, int y, int dir);
 void		key_hook(void *param);
 //exit
 void		close_mlx(t_data *data);
-void		cleanup(t_data *data);
+void		free_mlx_textures(mlx_texture_t **textures);
 
 //error
 void		check_input(int argc, char **argv);
-void		*ft_malloc(size_t size, t_data *data);
+void		*ft_malloc(size_t size);
 void		print_error(char *s);
+void		mlx_error_exit(t_data *data);
 
 //utils
 int			find_dir(t_data *data);
@@ -152,8 +153,6 @@ void		free_textures(t_data *data, int texture);
 void		texture_to_doubleptr(t_data *data);
 void		init_north_south(t_data *data);
 void		init_east_west(t_data *data);
-
-int			find_pixel(t_data *data, double tex_pos);
 
 //error check
 int			find_first_line_map(char **original_array);
@@ -224,5 +223,5 @@ int			get_start_point(char *line);
 int			check_valid_chars(char *line);
 int			check_commas(char *line);
 
-void		clean_cub_data(char **cub_data, int num_rows);
+void		clean_cub_data(t_data *data, char **cub_data, int num_rows);
 #endif
