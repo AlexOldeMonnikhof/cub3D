@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:39:10 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 14:31:56 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:20:24 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,16 @@ void	free_pixels(t_data *data)
 	free(data->pixels);
 }
 
-void	clean_cub_data(t_data *data, char **cub_data, int num_rows)
+void	clean_cub_data(char **cub_data, int num_rows, bool valid)
 {
 	int	i;
 
 	i = 0;
-	mlx_terminate(data->mlx);
 	while (i < num_rows)
 		free(cub_data[i++]);
 	free(cub_data);
+	if (!valid)
+		printf("Error:\nInvalid .cub file\n");
 	exit(EXIT_FAILURE);
 }
 
