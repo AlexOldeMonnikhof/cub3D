@@ -6,7 +6,7 @@
 #    By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 14:37:39 by aolde-mo          #+#    #+#              #
-#    Updated: 2024/02/12 18:56:06 by aolde-mo         ###   ########.fr        #
+#    Updated: 2024/02/13 15:35:35 by aolde-mo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,12 @@ LIBFT = libft/libft.a
 SRC = main.c init_utils.c utils.c init.c raycasting.c draw.c utils2.c hooks.c \
 		error_check.c get_next_line_utils.c final_parse.c get_next_line.c parsing.c \
 		allocate_map.c check_map.c check_player.c check_top_end.c check_top.c \
-		parsing_utils.c pars_start.c get_start_point.c cleanup.c
+		parsing_utils.c pars_start.c get_start_point.c cleanup.c parsing_utils2.c
 VPATH = src src/execute src/parsing
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 OBJ_DIR = obj
-# CFLAGS = -Ofast -fsanitize=address -g -Wall -Wextra -Werror
-# CFLAGS = -Ofast -fsanitize=address -g
-CFLAGS =
+CFLAGS = -Ofast -fsanitize=address -g -Wall -Wextra -Werror
+CFLAGS = 
 USER = $(shell whoami)
 LIBMLX = MLX42
 LIBS = $(LIBMLX)/build/libmlx42.a -L/Users/$(USER)/.brew/opt/glfw/lib -lglfw -ldl -pthread -lm -framework Cocoa -framework OpenGL -framework IOKit
