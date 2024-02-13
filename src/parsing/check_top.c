@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:21:59 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/12 15:07:16 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:13:31 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ int	check_position(char *line, char *dir)
 	str = NULL;
 	str = str_n_copy(line, i);
 	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		return (-1);
 	free(str);
+	if (fd < 0)
+		return (-1);
+	close(fd);
 	return (1);
 }
 
