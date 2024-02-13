@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 15:20:15 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:57:06 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,4 +224,5 @@ int			check_valid_chars(char *line);
 int			check_commas(char *line);
 
 void		clean_cub_data(char **cub_data, int num_rows, bool valid);
+void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 #endif

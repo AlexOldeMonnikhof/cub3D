@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:26:36 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/12 18:44:15 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:57:15 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	validate_numbers_in_range(const char *str)
 			str++;
 		if (!*str)
 			break ;
-		num = strtol(str, &next, 10);
+		num = ft_strtol(str, &next, 10);
 		if (num < 0 || num > 255)
 			return (4);
 		str = next;

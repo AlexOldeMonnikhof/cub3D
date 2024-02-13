@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 19:10:48 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:54:53 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**resize_array(char **array, int *capacity, int num_rows)
 
 	i = 0;
 	*capacity *= 2;
-	temp = realloc(array, (*capacity + 1) * sizeof(char *));
+	temp = ft_realloc(array, (*capacity + 1) * sizeof(char *));
 	if (!temp)
 	{
 		while (i < num_rows)

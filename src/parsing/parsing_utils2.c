@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:31:16 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 15:35:27 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:56:53 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,31 @@ long	ft_strtol(const char *str, char **endptr, int base)
 	}
 	skip_whitespace_and_sign(&str, &sign);
 	return (convert_str_to_long(str, sign, endptr));
+}
+
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
+{
+	void	*new_ptr;
+	size_t	size_to_copy;
+
+	if (new_size == 0)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	if (ptr == NULL)
+	{
+		new_ptr = ft_malloc(new_size);
+		return (new_ptr);
+	}
+	new_ptr = ft_malloc(new_size);
+	if (new_ptr == NULL)
+		return (NULL);
+	if (old_size < new_size)
+		size_to_copy = old_size;
+	else
+		size_to_copy = new_size;
+	ft_memcpy(new_ptr, ptr, size_to_copy);
+	free(ptr);
+	return (new_ptr);
 }
