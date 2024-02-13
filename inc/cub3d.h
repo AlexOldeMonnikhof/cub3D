@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 15:57:06 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:21:52 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "get_next_line.h"
 
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct s_player
 {
@@ -212,6 +213,12 @@ int			check_ends_line(char *line);
 int			check_last_line(char *line);
 int			find_map_start(char **cub);
 
+//----------------------------- UTILS PARSING 2 -----------------------------//
+long		ft_strtol(const char *str, char **endptr, int base);
+char		**ft_realloc(char **array, int old_capacity, int new_capacity);
+size_t		check_and_handle_overflow(unsigned long res, unsigned int d);
+long		convert_str_to_long(const char *str, int sign, char **endptr);
+
 //----------------------------- ALLOCATE MAP -----------------------------//
 void		process_map(t_data *data, char **cub);
 void		populate_map(t_data *data, char **cub, int rows, int cols);
@@ -224,5 +231,4 @@ int			check_valid_chars(char *line);
 int			check_commas(char *line);
 
 void		clean_cub_data(char **cub_data, int num_rows, bool valid);
-void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 #endif

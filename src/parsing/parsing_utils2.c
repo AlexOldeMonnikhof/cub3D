@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:31:16 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 15:56:53 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:21:40 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-// Function declarations
-void			skip_whitespace_and_sign(const char **str, int *sign);
-long			convert_str_to_long(const char *str, int sign, char **endptr);
-unsigned long	handle_overflow(unsigned long result, int digit, int sign);
 
 void	skip_whitespace_and_sign(const char **str, int *sign)
 {
@@ -37,69 +32,78 @@ void	skip_whitespace_and_sign(const char **str, int *sign)
 
 long	convert_str_to_long(const char *str, int sign, char **endptr)
 {
-	unsigned long	result;
 	int				digit;
+	unsigned long	result;
+	unsigned long	result_end;
 
 	result = 0;
 	while (*str >= '0' && *str <= '9')
 	{
 		digit = *str - '0';
-		result = handle_overflow(result, digit, sign);
+		result = check_and_handle_overflow(result, digit);
 		if (result == ULONG_MAX)
 			break ;
 		str++;
 	}
 	if (endptr != NULL)
 		*endptr = (char *)str;
-	return (sign * result);
+	result_end = sign * result;
+	return (result_end);
 }
 
-unsigned long	handle_overflow(unsigned long result, int digit, int sign)
+size_t	check_and_handle_overflow(unsigned long res, unsigned int d)
 {
-	if (result > ULONG_MAX / 10
-		|| (result == ULONG_MAX / 10 && digit > ULONG_MAX % 10))
+	size_t	return_value;
+
+	if (res > ULONG_MAX / 10
+		|| (res == ULONG_MAX / 10 && d > ULONG_MAX % 10))
 		return (ULONG_MAX);
-	return (result * 10 + digit);
+	return_value = res * 10 + d;
+	return (return_value);
 }
 
 long	ft_strtol(const char *str, char **endptr, int base)
 {
-	int	sign;
+	int		sign;
+	long	result;
 
-	sign = 0;
 	if (base != 10)
 	{
-		if (endptr)
+		if (endptr != NULL)
 			*endptr = (char *)str;
 		return (0);
 	}
+	sign = 0;
 	skip_whitespace_and_sign(&str, &sign);
-	return (convert_str_to_long(str, sign, endptr));
+	result = convert_str_to_long(str, sign, endptr);
+	return (result);
 }
 
-void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
+char	**ft_realloc(char **array, int old_capacity, int new_capacity)
 {
-	void	*new_ptr;
-	size_t	size_to_copy;
+	char	**new_array;
+	int		num_elements_to_copy;
+	int		i;
 
-	if (new_size == 0)
-	{
-		free(ptr);
+	new_array = malloc(new_capacity * sizeof(char *));
+	if (new_array == NULL)
 		return (NULL);
-	}
-	if (ptr == NULL)
+	if (array != NULL)
 	{
-		new_ptr = ft_malloc(new_size);
-		return (new_ptr);
+		if (old_capacity < new_capacity)
+			num_elements_to_copy = old_capacity;
+		else
+			num_elements_to_copy = new_capacity;
+		i = 0;
+		while (i < num_elements_to_copy)
+		{
+			new_array[i] = array[i];
+			i++;
+		}
+		free(array);
 	}
-	new_ptr = ft_malloc(new_size);
-	if (new_ptr == NULL)
-		return (NULL);
-	if (old_size < new_size)
-		size_to_copy = old_size;
-	else
-		size_to_copy = new_size;
-	ft_memcpy(new_ptr, ptr, size_to_copy);
-	free(ptr);
-	return (new_ptr);
+	i = old_capacity;
+	while (i < new_capacity)
+		new_array[i++] = NULL;
+	return (new_array);
 }

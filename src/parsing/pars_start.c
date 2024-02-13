@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 15:54:53 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:11:45 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,23 @@ static char	**process_line(char **array, char *line, int *num_rows)
 
 char	**resize_array(char **array, int *capacity, int num_rows)
 {
-	char	**temp;
 	int		i;
+	int		old_capacity;
+	int		new_capacity;
+	char	**temp;
 
-	i = 0;
-	*capacity *= 2;
-	temp = ft_realloc(array, (*capacity + 1) * sizeof(char *));
-	if (!temp)
+	old_capacity = *capacity;
+	new_capacity = 2 * *capacity + 1;
+	temp = ft_realloc(array, old_capacity, new_capacity);
+	if (temp == NULL)
 	{
+		i = 0;
 		while (i < num_rows)
-		{
-			free(array[i]);
-			i++;
-		}
+			free(array[i++]);
 		free(array);
 		return (NULL);
 	}
+	*capacity = new_capacity;
 	return (temp);
 }
 
