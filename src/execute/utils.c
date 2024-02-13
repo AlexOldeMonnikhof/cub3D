@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:57:28 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 15:17:07 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:45:20 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	texture_to_doubleptr(t_data *data)
 	while (i < 4)
 	{
 		pixel_count = data->text_arr[i]->width * data->text_arr[i]->height;
-		data->pixels[i] = ft_malloc(sizeof(uint32_t) * pixel_count);
+		data->pixels[i] = ft_malloc(sizeof(uint32_t) * pixel_count, data);
 		j = 0;
 		while (j < pixel_count)
 		{

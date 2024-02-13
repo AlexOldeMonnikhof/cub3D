@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 15:16:43 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 19:08:35 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "get_next_line.h"
+
+# include <stdio.h>
 
 typedef struct s_player
 {
@@ -101,6 +103,8 @@ typedef struct s_data
 	int				draw_end;
 
 	int				**map;
+	int				map_width;
+	int				map_height;
 	int				firstline_map;
 	char			*we;
 	char			*no;
@@ -138,7 +142,7 @@ void		cleanup(t_data *data);
 
 //error
 void		check_input(int argc, char **argv);
-void		*ft_malloc(size_t size);
+void		*ft_malloc(size_t size, t_data *data);
 void		print_error(char *s);
 
 //utils
@@ -220,4 +224,5 @@ int			get_start_point(char *line);
 int			check_valid_chars(char *line);
 int			check_commas(char *line);
 
+void		clean_cub_data(char **cub_data, int num_rows);
 #endif

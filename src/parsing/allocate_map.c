@@ -6,11 +6,13 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:43:16 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/12 15:16:51 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/12 19:07:20 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+#include <stdio.h>
 
 void	process_map(t_data *data, char **cub)
 {
@@ -22,6 +24,8 @@ void	process_map(t_data *data, char **cub)
 	calc_map_dimension(cub, map_start, &rows, &cols);
 	allocate_map_memory(data, rows, cols);
 	populate_map(data, cub, rows, cols);
+	data->map_height = rows;
+	data->map_width = cols;
 }
 
 char	get_map_char(char **cub, int map_start, int i, int j)
@@ -64,10 +68,7 @@ void	allocate_map_memory(t_data *data, int rows, int cols)
 	i = 0;
 	data->map = malloc(rows * sizeof(int *));
 	while (i < rows)
-	{
-		data->map[i] = malloc(cols * sizeof(int));
-		i++;
-	}
+		data->map[i++] = malloc(cols * sizeof(int));
 }
 
 void	calc_map_dimension(char **cub, int map_s, int *r, int *c)
