@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:27:53 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/12 15:03:58 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:58:36 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	check_map(char **cub, int f_l, t_data *data)
 {
 	int	error;
-
 	error = 0;
 	error = check_first_line_map(cub[f_l]);
 	if (error == -1)
@@ -84,7 +83,7 @@ int	check_up_and_main(char *main, char *up)
 				|| main[i - 1] == ' ')
 				return (-1);
 		}
-		if (main[i] == ' ')
+		if (main[i] == ' ' && i < len_up)
 		{
 			if (up[i] == '0' || up[i] == 'N'
 				|| up[i] == 'S' || up[i] == 'E' || up[i] == 'W')
