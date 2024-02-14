@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:24:50 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/12 18:44:31 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:35:10 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	check_ends_line(char *line)
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
+	if (line[i] == '\0')
+		return (2);
 	if (line[i] != '1')
 		return (-1);
 	while (line[i] == '1' || line[i] == '0'
@@ -67,6 +69,8 @@ int	check_last_line(char *line)
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
+	if (line[i] == '\0')
+		return (2);
 	if (line[i] != '1')
 		return (-1);
 	while (line[i] == '1' || line[i] == ' ')
@@ -81,9 +85,25 @@ int	check_last_line(char *line)
 int	find_map_start(char **cub)
 {
 	int	i;
+	int j;
+	int one_f;
 
+	j = 0;
 	i = 0;
-	while (cub[i] != NULL && ft_strncmp(cub[i], "111", 3) != 0)
+	one_f = 0;
+	while (cub[i] != NULL)
+	{
+		while ((cub[i][j] == '1' || cub[i][j] == ' '))
+		{
+			if (cub[i][j] == '1')
+				one_f = 1;
+			j++;
+		if (cub[i][j] == '\0' && one_f == 1)
+			return (i);
+		}
+		one_f = 0;
+		j = 0;
 		i++;
-	return (i);
+	}
+	return (-1);
 }

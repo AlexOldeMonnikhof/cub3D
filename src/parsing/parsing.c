@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:58:49 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/13 17:38:22 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:20:16 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,8 @@ int	parsing(char **twod, t_data *data)
 		i++;
 	}
 
-	
 	error = check_map(twod, f_l, data);
-	printf("2\n");
+	printf("error: %d\n", error);
 	if (error == -1)
 		return (-1);
 	return (1);
