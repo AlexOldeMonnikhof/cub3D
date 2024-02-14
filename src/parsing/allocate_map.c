@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:43:16 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/12 19:07:20 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:22:10 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	populate_map(t_data *data, char **cub, int rows, int cols)
 
 	i = 0;
 	map_start = find_map_start(cub);
+	printf("map_start: %d\n", map_start);
 	while (i < rows)
 	{
 		j = 0;
@@ -55,6 +56,7 @@ void	populate_map(t_data *data, char **cub, int rows, int cols)
 		{
 			c = get_map_char(cub, map_start, i, j);
 			data->map[i][j] = char_to_int(c);
+			printf("%d.", data->map[i][j]);
 			j++;
 		}
 		i++;
