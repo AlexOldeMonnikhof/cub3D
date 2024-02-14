@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 16:42:04 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:11:45 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ char	**resize_array(char **array, int *capacity, int num_rows)
 	{
 		i = 0;
 		while (i < num_rows)
-		{
-			free(array[i]);
-			i++;
-		}
+			free(array[i++]);
 		free(array);
 		return (NULL);
 	}
