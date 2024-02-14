@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:24 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 15:03:47 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:25:36 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,20 @@ void	*ft_malloc(size_t size)
 		exit(EXIT_FAILURE);
 	}
 	return (ret);
+}
+
+bool	is_wall(t_data *data, int new_x, int new_y)
+{
+	int	old_x;
+	int	old_y;
+
+	old_x = data->player->x_pos;
+	old_y = data->player->y_pos;
+	if (data->map[new_y][new_x] == WALL)
+		return (true);
+	if (data->map[new_y][old_x] == WALL)
+		return (true);
+	if (data->map[old_y][new_x] == WALL)
+		return (true);
+	return (false);
 }
