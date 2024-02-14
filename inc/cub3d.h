@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 10:34:17 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:12:39 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ void		check_input(int argc, char **argv);
 void		*ft_malloc(size_t size);
 void		print_error(char *s);
 void		mlx_error_exit(t_data *data);
+bool		is_wall(t_data *data, int new_x, int new_y);
 
 //utils
 int			find_dir(t_data *data);
