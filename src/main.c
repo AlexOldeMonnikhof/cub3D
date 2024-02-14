@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 16:15:56 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:49:32 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-
-// void	leakss()
-// {
-// 	system("leaks cub3d");
-// }
 
 static void	game(t_data *data)
 {

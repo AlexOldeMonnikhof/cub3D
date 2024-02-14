@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:31:16 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 16:23:22 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:03:10 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	skip_whitespace_and_sign(const char **str, int *sign)
+static void	skip_whitespace_and_sign(const char **str, int *sign)
 {
 	while (**str == ' ' || **str == '\n')
 		(*str)++;

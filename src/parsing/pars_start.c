@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 16:19:31 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:57:08 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	process_lines(int fd, char **array)
 	array[i] = NULL;
 }
 
-static char	**initialize_arrayyy(int num_rows)
+static char	**initialize_array(int num_rows)
 {
 	char	**array;
 
@@ -73,7 +73,7 @@ char	**read_cub_file_to_2d_array(const char *filename, int *num_rows)
 		exit(EXIT_FAILURE);
 	*num_rows = 0;
 	count_rows(filename, num_rows);
-	array = initialize_arrayyy(*num_rows);
+	array = initialize_array(*num_rows);
 	process_lines(fd, array);
 	return (array);
 }

@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 16:22:38 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:05:21 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define NOWALL 0
 # define WALL 1
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1600
+# define HEIGHT 1000
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
@@ -95,22 +95,22 @@ typedef struct s_data
 	mlx_image_t		*img;
 	t_player		*player;
 	t_ray			*ray;
-
+//textures and their colors
 	mlx_texture_t	**text_arr;
 	uint32_t		**pixels;
-
+//draw utils
 	int				line_height;
 	int				draw_start;
 	int				draw_end;
-
+//map utils
 	int				**map;
-	int				map_width;
-	int				map_height;
 	int				firstline_map;
+//paths to direction textures
 	char			*we;
 	char			*no;
 	char			*so;
 	char			*ea;
+//floor and ceiling colors
 	uint32_t		*f;
 	uint32_t		*c;
 	int				x_player;
@@ -157,7 +157,6 @@ void		init_north_south(t_data *data);
 void		init_east_west(t_data *data);
 void		clean_cub_data(char **cub_data, int num_rows, bool valid);
 
-//error check
 int			find_first_line_map(char **original_array);
 
 //----------------------------- PARSING -----------------------------//
@@ -166,13 +165,9 @@ int			find_first_line_mapp(char **original_a);
 int			parsing(char **twod, t_data *data);
 
 //----------------------------- PARSING START -----------------------------//
-// char		**resize_array(char **array, int *capacity, int num_rows);
-// char		**initialize_array(int *capacity);
-// char		**read_and_store_lines(int fd, char **array, int *n_r, int *cap);
 char		**read_cub_file_to_2d_array(const char *filename, int *num_rows);
 
 //------------------------------FINAL PARSE---------------------------//
-void		calculate_map_dimensions(char **cub, int *rows, int *cols);
 void		final_parse(t_data *data, char **cub);
 void		parse_rgb_values(uint32_t *color_array, char *rgb_str);
 int			parse_int(char **str);
@@ -198,13 +193,11 @@ void		process_floor_ceiling_colors(t_data *data, char **cub);
 
 //----------------------------- MAP CHECK -----------------------------//
 int			check_map(char **cub, int f_l, t_data *data);
-int			check_first_line_map(char *line);
 int			check_map_loop(char **cub, int f_l);
 int			check_up_and_main(char *main, char *up);
 int			check_endings_map(char **cub, int start);
 
 //----------------------------- PLAYER CHECK -----------------------------//
-void		get_coordinates(t_data *data, char **cub, int start, int i);
 int			check_player(char **cub, int start, t_data *data);
 void		get_start_direction(char c, t_data *data);
 
@@ -217,20 +210,17 @@ int			find_map_start(char **cub);
 
 //----------------------------- UTILS PARSING 2 -----------------------------//
 long		ft_strtol(const char *str, char **endptr, int base);
-char		**ft_realloc(char **array, int old_capacity, int new_capacity);
 size_t		check_and_handle_overflow(unsigned long res, unsigned int d);
 long		convert_str_to_long(const char *str, int sign, char **endptr);
 
 //----------------------------- ALLOCATE MAP -----------------------------//
 void		process_map(t_data *data, char **cub);
-void		populate_map(t_data *data, char **cub, int rows, int cols);
-void		allocate_map_memory(t_data *data, int rows, int cols);
-void		calc_map_dimension(char **cub, int map_start, int *rows, int *cols);
 int			find_map_start(char **cub);
 int			ft_strncmp_c(const char *s1, const char *s2, size_t n);
 int			get_start_point(char *line);
 int			check_valid_chars(char *line);
 int			check_commas(char *line);
 int			check_after_ll(char **cub, int last_l);
+int			check_spaces(char *line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:57:30 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/13 13:31:37 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:57:49 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-void	calculate_map_dimensions(char **cub, int *rows, int *cols)
+static void	calculate_map_dimensions(char **cub, int *rows, int *cols)
 {
 	int	i;
 	int	len;
@@ -32,17 +32,6 @@ void	calculate_map_dimensions(char **cub, int *rows, int *cols)
 			*cols = len;
 		i++;
 	}
-}
-
-void	final_parse(t_data *data, char **cub)
-{
-	int	rows;
-	int	cols;
-
-	process_wall_textures(data, cub);
-	process_floor_ceiling_colors(data, cub);
-	process_map(data, cub);
-	calculate_map_dimensions(cub, &rows, &cols);
 }
 
 void	parse_rgb_values(uint32_t *color_array, char *rgb_str)
@@ -90,4 +79,15 @@ uint32_t	rgb_to_uint32(char *rgb_str)
 	if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255)
 		return ((r << 16) | (g << 8) | b);
 	return (0);
+}
+
+void	final_parse(t_data *data, char **cub)
+{
+	int	rows;
+	int	cols;
+
+	process_wall_textures(data, cub);
+	process_floor_ceiling_colors(data, cub);
+	process_map(data, cub);
+	calculate_map_dimensions(cub, &rows, &cols);
 }
