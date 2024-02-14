@@ -231,6 +231,5 @@ int			get_start_point(char *line);
 int			check_valid_chars(char *line);
 int			check_commas(char *line);
 
-void		clean_cub_data(char **cub_data, int num_rows, bool valid);
-int	check_after_ll(char **cub, int last_l);
+
 #endif
