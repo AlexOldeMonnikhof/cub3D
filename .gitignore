@@ -3,4 +3,6 @@
 cub3d
 .DS_Store
 libft/libft.a
+test*
 MLX42/build
+Makefilecodam

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:58:49 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/13 13:31:40 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:38:22 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,17 @@ int	parsing(char **twod, t_data *data)
 	error_dos = check_amount(twod, f_l);
 	if (error == -1 || error_dos == -1 || f_l == -1)
 		return (-1);
+	printf("1\n");
+	int i = 0;
+	while (twod[i] != NULL)
+	{
+		printf("%s\n", twod[i]);
+		i++;
+	}
+
+	
 	error = check_map(twod, f_l, data);
+	printf("2\n");
 	if (error == -1)
 		return (-1);
 	return (1);

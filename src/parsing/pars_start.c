@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   pars_start.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
 /*   Updated: 2024/02/13 17:11:45 by aolde-mo         ###   ########.fr       */
