@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:31:16 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 17:21:40 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:23:22 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	skip_whitespace_and_sign(const char **str, int *sign)
 {
-	while (**str == ' ' || **str == '\t' || **str == '\n')
+	while (**str == ' ' || **str == '\n')
 		(*str)++;
 	*sign = 1;
 	if (**str == '-' || **str == '+')
@@ -79,31 +79,22 @@ long	ft_strtol(const char *str, char **endptr, int base)
 	return (result);
 }
 
-char	**ft_realloc(char **array, int old_capacity, int new_capacity)
+int	check_spaces(char *line)
 {
-	char	**new_array;
-	int		num_elements_to_copy;
-	int		i;
+	int	i;
 
-	new_array = malloc(new_capacity * sizeof(char *));
-	if (new_array == NULL)
-		return (NULL);
-	if (array != NULL)
+	i = 0;
+	while (line[i] < '0' || line[i] > '9')
+		i++;
+	while ((line[i] >= '0' && line[i] <= '9') || line[i] == ',')
 	{
-		if (old_capacity < new_capacity)
-			num_elements_to_copy = old_capacity;
-		else
-			num_elements_to_copy = new_capacity;
-		i = 0;
-		while (i < num_elements_to_copy)
-		{
-			new_array[i] = array[i];
-			i++;
-		}
-		free(array);
+		if (line[i] == ' ')
+			return (5);
+		i++;
 	}
-	i = old_capacity;
-	while (i < new_capacity)
-		new_array[i++] = NULL;
-	return (new_array);
+	while (line[i] == ' ')
+		i++;
+	if (line[i] == '\0')
+		return (0);
+	return (5);
 }

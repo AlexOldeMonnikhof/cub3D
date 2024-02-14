@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 10:43:26 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:15:56 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int	main(int argc, char **argv)
 		clean_cub_data(cub_data, num_rows, false);
 	if (parsing(cub_data, data) == -1)
 		clean_cub_data(cub_data, num_rows, false);
-	printf("before parsing\n");
 	final_parse(data, cub_data);
-	printf("ater final parse\n");
 	initialize(data);
 	game(data);
 	clean_cub_data(cub_data, num_rows, true);

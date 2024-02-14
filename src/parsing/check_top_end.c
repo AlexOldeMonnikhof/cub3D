@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_top_end.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:26:36 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/13 16:27:41 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:17:21 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ void	process_floor_ceiling_colors(t_data *data, char **cub)
 	{
 		if (ft_strncmp_c(cub[i], "F ", 2) == 0)
 		{
-			data->f = malloc(3 * sizeof(uint32_t));
+			data->f = ft_malloc(3 * sizeof(uint32_t));
 			parse_rgb_values(data->f, cub[i] + 2);
 		}
 		else if (ft_strncmp_c(cub[i], "C ", 2) == 0)
 		{
-			data->c = malloc(3 * sizeof(uint32_t));
+			data->c = ft_malloc(3 * sizeof(uint32_t));
 			parse_rgb_values(data->c, cub[i] + 2);
 		}
 		i++;

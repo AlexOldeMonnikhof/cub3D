@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:27:53 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/14 11:50:21 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:20:41 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 int	check_map(char **cub, int f_l, t_data *data)
 {
 	int	error;
+
 	error = 0;
 	f_l = find_map_start(cub);
-	printf("map_start: %d\n", f_l);
-	printf("cub[f_l]: %s\n", cub[f_l]);
 	if (error == -1)
 		return (-1);
 	error = check_map_loop(cub, f_l);
@@ -42,22 +41,6 @@ int	check_map(char **cub, int f_l, t_data *data)
 	return (error);
 }
 
-int	check_first_line_map(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	while (line[i] == '1')
-		i++;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	if (line[i] != '\0')
-		return (-1);
-	return (1);
-}
-
 int	check_map_loop(char **cub, int f_l)
 {
 	int	i;
@@ -68,7 +51,6 @@ int	check_map_loop(char **cub, int f_l)
 	i++;
 	while (cub[i] != NULL)
 	{
-		printf("cub[i]: %s\n", cub[i]);
 		error = check_up_and_main(cub[i], cub[i - 1]);
 		if (error == -1)
 			return (-1);
@@ -132,8 +114,8 @@ int	check_endings_map(char **cub, int start)
 
 int	check_after_ll(char **cub, int last_l)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (cub[last_l] != NULL)
 	{

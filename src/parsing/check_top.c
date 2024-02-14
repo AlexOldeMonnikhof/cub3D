@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_top.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:21:59 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/14 13:13:48 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:23:18 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ int	check_position(char *line, char *dir)
 
 	i = 0;
 	j = 0;
-	while (line[i] == ' ' || line[i] == '\t')
+	while (line[i] == ' ')
 		i++;
 	while (dir[j] != '\0')
 	{
 		if (line[i++] != dir[j++])
 			exit(EXIT_FAILURE);
 	}
-	while (line[i] == ' ' || line[i] == '\t')
+	while (line[i] == ' ')
 		i++;
 	fd = 0;
 	str = NULL;
@@ -105,7 +105,7 @@ int	check_position_c(char *line, char *dir)
 
 	i = 0;
 	j = 0;
-	while (line[i] == ' ' || line[i] == '\t')
+	while (line[i] == ' ')
 		i++;
 	while (dir[j] != '\0')
 	{
@@ -118,7 +118,7 @@ int	check_position_c(char *line, char *dir)
 		i++;
 	if (line[i] < '0' || line[i] > '9')
 		return (1);
-	while (line[i] == ' ' || line[i] == '\t')
+	while (line[i] == ' ')
 		i++;
 	return (0);
 }
@@ -149,24 +149,4 @@ int	check_three_variables(char *line)
 	if (count != 3)
 		return (2);
 	return (0);
-}
-
-int	check_spaces(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] < '0' || line[i] > '9')
-		i++;
-	while ((line[i] >= '0' && line[i] <= '9') || line[i] == ',')
-	{
-		if (line[i] == ' ')
-			return (5);
-		i++;
-	}
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == '\0')
-		return (0);
-	return (5);		
 }

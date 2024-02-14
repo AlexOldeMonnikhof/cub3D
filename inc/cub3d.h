@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 12:12:39 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:22:38 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ void		free_textures(t_data *data, int texture);
 void		texture_to_doubleptr(t_data *data);
 void		init_north_south(t_data *data);
 void		init_east_west(t_data *data);
+void		clean_cub_data(char **cub_data, int num_rows, bool valid);
 
 //error check
 int			find_first_line_map(char **original_array);
@@ -165,9 +166,9 @@ int			find_first_line_mapp(char **original_a);
 int			parsing(char **twod, t_data *data);
 
 //----------------------------- PARSING START -----------------------------//
-char		**resize_array(char **array, int *capacity, int num_rows);
-char		**initialize_array(int *capacity);
-char		**read_and_store_lines(int fd, char **array, int *n_r, int *cap);
+// char		**resize_array(char **array, int *capacity, int num_rows);
+// char		**initialize_array(int *capacity);
+// char		**read_and_store_lines(int fd, char **array, int *n_r, int *cap);
 char		**read_cub_file_to_2d_array(const char *filename, int *num_rows);
 
 //------------------------------FINAL PARSE---------------------------//
@@ -230,6 +231,6 @@ int			ft_strncmp_c(const char *s1, const char *s2, size_t n);
 int			get_start_point(char *line);
 int			check_valid_chars(char *line);
 int			check_commas(char *line);
-
+int			check_after_ll(char **cub, int last_l);
 
 #endif
