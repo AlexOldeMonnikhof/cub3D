@@ -6,7 +6,7 @@
 /*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 10:34:17 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:07:48 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,4 +231,5 @@ int			check_valid_chars(char *line);
 int			check_commas(char *line);
 
 void		clean_cub_data(char **cub_data, int num_rows, bool valid);
+int	check_after_ll(char **cub, int last_l);
 #endif
