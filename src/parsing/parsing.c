@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:58:49 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/14 11:20:16 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:13:49 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	find_first_line_mapp(char **original_a)
 	index = 0;
 	while (original_a[index] != NULL)
 	{
-		while (original_a[index][i] == ' ' || original_a[index][i] == '\t')
+		while (original_a[index][i] == ' ')
 			i++;
 		if (original_a[index][i] == '1' || original_a[index][i] == '0')
 			return (index);
@@ -74,6 +74,7 @@ int	parsing(char **twod, t_data *data)
 	int	error;
 	int	f_l;
 	int	error_dos;
+	int	i;
 
 	f_l = 0;
 	error = 0;
@@ -82,16 +83,8 @@ int	parsing(char **twod, t_data *data)
 	error_dos = check_amount(twod, f_l);
 	if (error == -1 || error_dos == -1 || f_l == -1)
 		return (-1);
-	printf("1\n");
-	int i = 0;
-	while (twod[i] != NULL)
-	{
-		printf("%s\n", twod[i]);
-		i++;
-	}
-
+	i = 0;
 	error = check_map(twod, f_l, data);
-	printf("error: %d\n", error);
 	if (error == -1)
 		return (-1);
 	return (1);

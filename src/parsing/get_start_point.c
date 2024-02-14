@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_start_point.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:19:14 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/14 13:01:28 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:11:55 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,4 @@ int	check_valid_chars(char *line)
 	if (line[i] != '\0')
 		return (-1);
 	return (0);
-
-	
 }
