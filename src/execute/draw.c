@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:48:11 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/12 15:09:01 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:12:02 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	draw_line(t_data *data, int x)
 	y = 0;
 	calculate_draw_vars(data);
 	while (y < data->draw_start)
-		mlx_put_pixel(data->img, x, y++, get_floor_ceiling_rgba(data->f));
+		mlx_put_pixel(data->img, x, y++, get_floor_ceiling_rgba(data->c));
 	put_stripe(data, x, y, find_dir(data));
 	y += data->draw_end - data->draw_start;
 	while (y < HEIGHT)
-		mlx_put_pixel(data->img, x, y++, get_floor_ceiling_rgba(data->c));
+		mlx_put_pixel(data->img, x, y++, get_floor_ceiling_rgba(data->f));
 }

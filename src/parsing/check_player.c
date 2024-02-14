@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:30:22 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/05 16:37:18 by dtunderm         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:00:53 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	get_coordinates(t_data *data, char **cub, int start, int i)
+static void	get_coordinates(t_data *data, char **cub, int start, int i)
 {
 	data->x_player = i;
 	data->y_player = start - data->firstline_map;

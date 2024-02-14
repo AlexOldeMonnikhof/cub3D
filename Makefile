@@ -6,7 +6,7 @@
 #    By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 14:37:39 by aolde-mo          #+#    #+#              #
-#    Updated: 2024/02/14 16:23:55 by aolde-mo         ###   ########.fr        #
+#    Updated: 2024/02/14 17:06:44 by aolde-mo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC = main.c init_utils.c utils.c init.c raycasting.c draw.c utils2.c hooks.c \
 VPATH = src src/execute src/parsing
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 OBJ_DIR = obj
-CFLAGS = -Ofast -fsanitize=address -g -Wall -Wextra -Werror
+CFLAGS = -Ofast -Wall -Wextra -Werror
 USER = $(shell whoami)
 LIBMLX = MLX42
 LIBS = $(LIBMLX)/build/libmlx42.a -L/Users/$(USER)/.brew/opt/glfw/lib -lglfw -ldl -pthread -lm -framework Cocoa -framework OpenGL -framework IOKit
