@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:49:09 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/11 16:11:29 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:18:33 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	move_forward_backward(t_data *data, t_movement movement)
 		sign = -1;
 	tmp_x = player->x_pos + player->x_dir * MOVE_SPEED * sign;
 	tmp_y = player->y_pos + player->y_dir * MOVE_SPEED * sign;
-	if (data->map[(int)tmp_y][(int)tmp_x] == WALL)
+	if (is_wall(data, tmp_x, tmp_y) == true)
 		return ;
 	player->x_pos = tmp_x;
 	player->y_pos = tmp_y;
@@ -84,7 +84,7 @@ static void	move_left_right(t_data *data, t_movement movement)
 		tmp_x = player->x_pos - player->y_dir * MOVE_SPEED;
 		tmp_y = player->y_pos + player->x_dir * MOVE_SPEED;
 	}
-	if (data->map[(int)tmp_y][(int)tmp_x] == WALL)
+	if (is_wall(data, tmp_x, tmp_y) == true)
 		return ;
 	player->x_pos = tmp_x;
 	player->y_pos = tmp_y;
