@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_top.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtunderm <dtunderm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:21:59 by dtunderm          #+#    #+#             */
-/*   Updated: 2024/02/13 14:13:31 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:13:48 by dtunderm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	check_colors(char *line, char *dir)
 	error = check_valid_chars(line);
 	if (error != 0)
 		return (0);
+	if (check_spaces(line) != 0)
+		return (0);
 	return (1);
 }
 
@@ -147,4 +149,24 @@ int	check_three_variables(char *line)
 	if (count != 3)
 		return (2);
 	return (0);
+}
+
+int	check_spaces(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] < '0' || line[i] > '9')
+		i++;
+	while ((line[i] >= '0' && line[i] <= '9') || line[i] == ',')
+	{
+		if (line[i] == ' ')
+			return (5);
+		i++;
+	}
+	while (line[i] == ' ')
+		i++;
+	if (line[i] == '\0')
+		return (0);
+	return (5);		
 }
