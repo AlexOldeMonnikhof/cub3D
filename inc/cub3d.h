@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/18 13:08:41 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:50:09 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void		free_mlx_textures(mlx_texture_t **textures);
 //error
 void		check_input(int argc, char **argv);
 void		*ft_malloc(size_t size);
+void		*ft_malloc2(size_t size, char **array, int i);
 void		print_error(char *s);
 void		mlx_error_exit(t_data *data);
 bool		is_wall(t_data *data, int new_x, int new_y);
