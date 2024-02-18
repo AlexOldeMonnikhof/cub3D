@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/18 15:40:57 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:45:41 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	main(int argc, char **argv)
 	game(data);
 	clean_cub_data(cub_data, num_rows, true);
 	mlx_terminate(data->mlx);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
