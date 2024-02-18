@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:17 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 16:57:08 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:36:07 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	process_lines(int fd, char **array)
 		read = ft_strlen(line);
 		if (line[read - 1] == '\n')
 			line[read - 1] = '\0';
-		array[i] = malloc((read + 1) * sizeof(char));
+		array[i] = ft_malloc2((read + 1) * sizeof(char), array, i);
 		ft_strcpy(array[i], line);
 		free(line);
 		line = get_next_line(fd);

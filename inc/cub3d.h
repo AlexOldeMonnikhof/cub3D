@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:02 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 17:05:21 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:08:41 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define NOWALL 0
 # define WALL 1
 
-# define WIDTH 1600
+# define WIDTH 2000
 # define HEIGHT 1000
 
 # include "../MLX42/include/MLX42/MLX42.h"

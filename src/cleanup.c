@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 18:39:10 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/14 16:56:14 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:14:53 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	clean_cub_data(char **cub_data, int num_rows, bool valid)
 		free(cub_data[i++]);
 	free(cub_data);
 	if (!valid)
-		printf("Error:\nInvalid .cub file\n");
+		printf("Error\nInvalid .cub file\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -33,7 +33,12 @@ void	free_mlx_textures(mlx_texture_t **textures)
 
 	i = 0;
 	while (i < 4)
-		mlx_delete_texture(textures[i++]);
+	{
+		if (textures[i])
+			mlx_delete_texture(textures[i]);
+		i++;
+	}
+	exit(EXIT_FAILURE);
 }
 
 void	mlx_error_exit(t_data *data)

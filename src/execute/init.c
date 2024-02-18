@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:09:47 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/13 14:29:29 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:24:11 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	init_player(t_data *data)
 void	load_textures(t_data *data)
 {
 	data->text_arr = ft_malloc(sizeof(mlx_texture_t *) * 4);
+	data->text_arr[NORTH] = NULL;
+	data->text_arr[EAST] = NULL;
+	data->text_arr[SOUTH] = NULL;
+	data->text_arr[WEST] = NULL;
 	data->text_arr[NORTH] = mlx_load_png(data->no);
 	data->text_arr[EAST] = mlx_load_png(data->ea);
 	data->text_arr[SOUTH] = mlx_load_png(data->so);
