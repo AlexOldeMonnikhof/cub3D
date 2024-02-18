@@ -6,11 +6,11 @@
 #    By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 14:37:39 by aolde-mo          #+#    #+#              #
-#    Updated: 2024/02/14 17:06:44 by aolde-mo         ###   ########.fr        #
+#    Updated: 2024/02/18 12:59:23 by aolde-mo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 LIBFT = libft/libft.a
 SRC = main.c init_utils.c utils.c init.c raycasting.c draw.c utils2.c hooks.c \
 		error_check.c get_next_line_utils.c final_parse.c get_next_line.c parsing.c \
