@@ -6,7 +6,7 @@
 #    By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 14:37:39 by aolde-mo          #+#    #+#              #
-#    Updated: 2024/02/18 12:59:23 by aolde-mo         ###   ########.fr        #
+#    Updated: 2024/02/18 16:49:26 by aolde-mo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ USER = $(shell whoami)
 LIBMLX = MLX42
 LIBS = $(LIBMLX)/build/libmlx42.a -L/Users/$(USER)/.brew/opt/glfw/lib -lglfw -ldl -pthread -lm -framework Cocoa -framework OpenGL -framework IOKit
 
-CC = gcc
+CC = cc
 
 all: libmlx $(NAME)
 
