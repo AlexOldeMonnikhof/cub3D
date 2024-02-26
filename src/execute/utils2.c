@@ -6,7 +6,7 @@
 /*   By: aolde-mo <aolde-mo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:43:24 by aolde-mo          #+#    #+#             */
-/*   Updated: 2024/02/18 15:38:04 by aolde-mo         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:22:12 by aolde-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ void	print_error(char *s)
 
 void	check_input(int argc, char **argv)
 {
+	int	len;
+
 	if (argc != 2)
 		print_error("Wrong amount of arguments. Only *.cub is needed\n");
-	if (!ft_strnstr(argv[1], ".cub", ft_strlen(argv[1])))
-		print_error("File must be *.cub\n");
 	if (WIDTH < 1 || WIDTH > 2000 || HEIGHT < 1 || HEIGHT > 2000)
 		print_error("Inproper width or height\n(0-2000) is allowed\n");
+	len = ft_strlen(argv[1]);
+	if (len < 4 || ft_strncmp(argv[1] + len - 4, ".cub", 4))
+		print_error("File must be *.cub\n");
 }
 
 void	*ft_malloc(size_t size)
